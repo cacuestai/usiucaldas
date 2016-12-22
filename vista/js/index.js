@@ -23,22 +23,16 @@ var tipoReserva;
 
 $(document).on('ready', function () {
 
-    // una de las formas de manipular el css mediante jQuery    
-    var opciones = "#index-CRUDS";
-    $(opciones).css({'width': '13em'});   
-    $("#index-calendario").css({'width': '13em'});
-
-   
-    $("#index-CRUDS").button().on("click", function () {
-        cargarPagina("#index-contenido", "vista/html/CRUDS.html");
-
-    });
+    $("#index-menu button").css({'width': '13em'});   
+    
     $("#index-calendario").button().on("click", function () {
         cargarPagina("#index-contenido", "vista/html/calendario.html");        
     });
+    
     $("#cerrar-sesion").button().on("click", function () {
         location.reload(true);        
     });
+    
     // un ejemplo de uso de selectores jQuery para controlar eventos sobre links
     $("#index-menu-superior li a").each(function () {
         var opcion = $(this).text();
