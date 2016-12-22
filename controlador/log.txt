@@ -1,0 +1,1194 @@
+[21-Dec-2016 23:11:18 America/Bogota] SELECT cronograma.id_reserva, cronograma.fecha_reserva,cronograma.fecha_ini_prestamo, cronograma.fecha_fin_prestamo,cronograma.descripcion, cronograma.id_usuario,sala.color,usuario.nombre FROM cronograma,sala,usuario WHERE cronograma.id_sala=sala.id_sala and usuario.id_usuario=cronograma.id_usuario
+[22-Dec-2016 04:11:18 UTC] Array
+(
+    [0] => Array
+        (
+            [id_reserva] => 95
+            [fecha_reserva] => 2016-12-07 16:23:00
+            [fecha_ini_prestamo] => 2016-12-05 07:00:00
+            [fecha_fin_prestamo] => 2016-12-05 08:30:00
+            [descripcion] => 
+            [id_usuario] => 176
+            [color] => #f16dcb
+            [nombre] => ofelia
+            [id] => 95
+            [title] => 
+            [start] => 2016-12-05T07:00:00+00:00
+            [end] => 2016-12-05T08:30:00+00:00
+        )
+
+    [1] => Array
+        (
+            [id_reserva] => 90
+            [fecha_reserva] => 2016-12-02 21:18:00
+            [fecha_ini_prestamo] => 2017-02-02 18:00:00
+            [fecha_fin_prestamo] => 2017-02-02 20:00:00
+            [descripcion] => Clase lo que sea
+            [id_usuario] => 173
+            [color] => #f16dcb
+            [nombre] => jhoan
+            [id] => 90
+            [title] => Clase lo que sea
+            [start] => 2017-02-02T18:00:00+00:00
+            [end] => 2017-02-02T20:00:00+00:00
+        )
+
+    [2] => Array
+        (
+            [id_reserva] => 94
+            [fecha_reserva] => 2016-12-06 23:12:00
+            [fecha_ini_prestamo] => 2016-12-16 00:00:00
+            [fecha_fin_prestamo] => 2016-12-17 02:30:00
+            [descripcion] => Monitoria sala
+            [id_usuario] => 170
+            [color] => #8000ff
+            [nombre] => pedro
+            [id] => 94
+            [title] => Monitoria sala
+            [start] => 2016-12-16T00:00:00+00:00
+            [end] => 2016-12-17T02:30:00+00:00
+        )
+
+    [3] => Array
+        (
+            [id_reserva] => 96
+            [fecha_reserva] => 2016-12-07 16:26:00
+            [fecha_ini_prestamo] => 2016-12-01 08:00:00
+            [fecha_fin_prestamo] => 2016-12-01 10:00:00
+            [descripcion] => Monitoria TGS
+            [id_usuario] => 190
+            [color] => #f16dcb
+            [nombre] => nataly
+            [id] => 96
+            [title] => Monitoria TGS
+            [start] => 2016-12-01T08:00:00+00:00
+            [end] => 2016-12-01T10:00:00+00:00
+        )
+
+    [4] => Array
+        (
+            [id_reserva] => 97
+            [fecha_reserva] => 2016-12-07 16:43:00
+            [fecha_ini_prestamo] => 2016-12-01 08:00:00
+            [fecha_fin_prestamo] => 2016-12-01 11:00:00
+            [descripcion] => Introducción a la ingeniería
+            [id_usuario] => 187
+            [color] => #000000
+            [nombre] => alberto
+            [id] => 97
+            [title] => Introducción a la ingeniería
+            [start] => 2016-12-01T08:00:00+00:00
+            [end] => 2016-12-01T11:00:00+00:00
+        )
+
+    [5] => Array
+        (
+            [id_reserva] => 98
+            [fecha_reserva] => 2016-12-07 17:18:00
+            [fecha_ini_prestamo] => 2016-12-01 08:00:00
+            [fecha_fin_prestamo] => 2016-12-01 10:00:00
+            [descripcion] => Clase de especiales
+            [id_usuario] => 150
+            [color] => #000000
+            [nombre] => pepe l
+            [id] => 98
+            [title] => Clase de especiales
+            [start] => 2016-12-01T08:00:00+00:00
+            [end] => 2016-12-01T10:00:00+00:00
+        )
+
+    [6] => Array
+        (
+            [id_reserva] => 99
+            [fecha_reserva] => 2016-12-07 19:35:00
+            [fecha_ini_prestamo] => 2016-11-08 19:00:00
+            [fecha_fin_prestamo] => 2016-11-08 20:00:00
+            [descripcion] => 
+            [id_usuario] => 182
+            [color] => #f16dcb
+            [nombre] => leonel
+            [id] => 99
+            [title] => 
+            [start] => 2016-11-08T19:00:00+00:00
+            [end] => 2016-11-08T20:00:00+00:00
+        )
+
+    [7] => Array
+        (
+            [id_reserva] => 100
+            [fecha_reserva] => 2016-12-07 19:35:00
+            [fecha_ini_prestamo] => 2016-11-15 19:00:00
+            [fecha_fin_prestamo] => 2016-11-15 20:00:00
+            [descripcion] => 
+            [id_usuario] => 182
+            [color] => #f16dcb
+            [nombre] => leonel
+            [id] => 100
+            [title] => 
+            [start] => 2016-11-15T19:00:00+00:00
+            [end] => 2016-11-15T20:00:00+00:00
+        )
+
+    [8] => Array
+        (
+            [id_reserva] => 101
+            [fecha_reserva] => 2016-12-07 19:35:00
+            [fecha_ini_prestamo] => 2016-11-22 19:00:00
+            [fecha_fin_prestamo] => 2016-11-22 20:00:00
+            [descripcion] => 
+            [id_usuario] => 182
+            [color] => #f16dcb
+            [nombre] => leonel
+            [id] => 101
+            [title] => 
+            [start] => 2016-11-22T19:00:00+00:00
+            [end] => 2016-11-22T20:00:00+00:00
+        )
+
+    [9] => Array
+        (
+            [id_reserva] => 102
+            [fecha_reserva] => 2016-12-07 19:35:00
+            [fecha_ini_prestamo] => 2016-11-29 19:00:00
+            [fecha_fin_prestamo] => 2016-11-29 20:00:00
+            [descripcion] => 
+            [id_usuario] => 182
+            [color] => #f16dcb
+            [nombre] => leonel
+            [id] => 102
+            [title] => 
+            [start] => 2016-11-29T19:00:00+00:00
+            [end] => 2016-11-29T20:00:00+00:00
+        )
+
+    [10] => Array
+        (
+            [id_reserva] => 103
+            [fecha_reserva] => 2016-12-07 19:35:00
+            [fecha_ini_prestamo] => 2016-12-06 19:00:00
+            [fecha_fin_prestamo] => 2016-12-06 20:00:00
+            [descripcion] => 
+            [id_usuario] => 182
+            [color] => #f16dcb
+            [nombre] => leonel
+            [id] => 103
+            [title] => 
+            [start] => 2016-12-06T19:00:00+00:00
+            [end] => 2016-12-06T20:00:00+00:00
+        )
+
+    [11] => Array
+        (
+            [id_reserva] => 104
+            [fecha_reserva] => 2016-12-07 19:38:00
+            [fecha_ini_prestamo] => 2016-12-07 20:00:00
+            [fecha_fin_prestamo] => 2016-12-07 21:00:00
+            [descripcion] => 
+            [id_usuario] => 178
+            [color] => #8000ff
+            [nombre] => yhordan
+            [id] => 104
+            [title] => 
+            [start] => 2016-12-07T20:00:00+00:00
+            [end] => 2016-12-07T21:00:00+00:00
+        )
+
+    [12] => Array
+        (
+            [id_reserva] => 105
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-04-12 18:00:00
+            [fecha_fin_prestamo] => 2017-04-12 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 105
+            [title] => Robótica
+            [start] => 2017-04-12T18:00:00+00:00
+            [end] => 2017-04-12T19:00:00+00:00
+        )
+
+    [13] => Array
+        (
+            [id_reserva] => 106
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-04-19 18:00:00
+            [fecha_fin_prestamo] => 2017-04-19 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 106
+            [title] => Robótica
+            [start] => 2017-04-19T18:00:00+00:00
+            [end] => 2017-04-19T19:00:00+00:00
+        )
+
+    [14] => Array
+        (
+            [id_reserva] => 107
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-04-26 18:00:00
+            [fecha_fin_prestamo] => 2017-04-26 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 107
+            [title] => Robótica
+            [start] => 2017-04-26T18:00:00+00:00
+            [end] => 2017-04-26T19:00:00+00:00
+        )
+
+    [15] => Array
+        (
+            [id_reserva] => 108
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-05-03 18:00:00
+            [fecha_fin_prestamo] => 2017-05-03 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 108
+            [title] => Robótica
+            [start] => 2017-05-03T18:00:00+00:00
+            [end] => 2017-05-03T19:00:00+00:00
+        )
+
+    [16] => Array
+        (
+            [id_reserva] => 109
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-05-10 18:00:00
+            [fecha_fin_prestamo] => 2017-05-10 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 109
+            [title] => Robótica
+            [start] => 2017-05-10T18:00:00+00:00
+            [end] => 2017-05-10T19:00:00+00:00
+        )
+
+    [17] => Array
+        (
+            [id_reserva] => 110
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-05-17 18:00:00
+            [fecha_fin_prestamo] => 2017-05-17 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 110
+            [title] => Robótica
+            [start] => 2017-05-17T18:00:00+00:00
+            [end] => 2017-05-17T19:00:00+00:00
+        )
+
+    [18] => Array
+        (
+            [id_reserva] => 111
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-05-24 18:00:00
+            [fecha_fin_prestamo] => 2017-05-24 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 111
+            [title] => Robótica
+            [start] => 2017-05-24T18:00:00+00:00
+            [end] => 2017-05-24T19:00:00+00:00
+        )
+
+    [19] => Array
+        (
+            [id_reserva] => 112
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-05-31 18:00:00
+            [fecha_fin_prestamo] => 2017-05-31 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 112
+            [title] => Robótica
+            [start] => 2017-05-31T18:00:00+00:00
+            [end] => 2017-05-31T19:00:00+00:00
+        )
+
+    [20] => Array
+        (
+            [id_reserva] => 113
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-06-07 18:00:00
+            [fecha_fin_prestamo] => 2017-06-07 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 113
+            [title] => Robótica
+            [start] => 2017-06-07T18:00:00+00:00
+            [end] => 2017-06-07T19:00:00+00:00
+        )
+
+    [21] => Array
+        (
+            [id_reserva] => 114
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-06-14 18:00:00
+            [fecha_fin_prestamo] => 2017-06-14 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 114
+            [title] => Robótica
+            [start] => 2017-06-14T18:00:00+00:00
+            [end] => 2017-06-14T19:00:00+00:00
+        )
+
+    [22] => Array
+        (
+            [id_reserva] => 115
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-06-21 18:00:00
+            [fecha_fin_prestamo] => 2017-06-21 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 115
+            [title] => Robótica
+            [start] => 2017-06-21T18:00:00+00:00
+            [end] => 2017-06-21T19:00:00+00:00
+        )
+
+    [23] => Array
+        (
+            [id_reserva] => 116
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-06-28 18:00:00
+            [fecha_fin_prestamo] => 2017-06-28 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 116
+            [title] => Robótica
+            [start] => 2017-06-28T18:00:00+00:00
+            [end] => 2017-06-28T19:00:00+00:00
+        )
+
+    [24] => Array
+        (
+            [id_reserva] => 117
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-07-05 18:00:00
+            [fecha_fin_prestamo] => 2017-07-05 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 117
+            [title] => Robótica
+            [start] => 2017-07-05T18:00:00+00:00
+            [end] => 2017-07-05T19:00:00+00:00
+        )
+
+    [25] => Array
+        (
+            [id_reserva] => 118
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-07-12 18:00:00
+            [fecha_fin_prestamo] => 2017-07-12 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 118
+            [title] => Robótica
+            [start] => 2017-07-12T18:00:00+00:00
+            [end] => 2017-07-12T19:00:00+00:00
+        )
+
+    [26] => Array
+        (
+            [id_reserva] => 119
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-07-19 18:00:00
+            [fecha_fin_prestamo] => 2017-07-19 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 119
+            [title] => Robótica
+            [start] => 2017-07-19T18:00:00+00:00
+            [end] => 2017-07-19T19:00:00+00:00
+        )
+
+    [27] => Array
+        (
+            [id_reserva] => 120
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-07-26 18:00:00
+            [fecha_fin_prestamo] => 2017-07-26 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 120
+            [title] => Robótica
+            [start] => 2017-07-26T18:00:00+00:00
+            [end] => 2017-07-26T19:00:00+00:00
+        )
+
+    [28] => Array
+        (
+            [id_reserva] => 121
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-08-02 18:00:00
+            [fecha_fin_prestamo] => 2017-08-02 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 121
+            [title] => Robótica
+            [start] => 2017-08-02T18:00:00+00:00
+            [end] => 2017-08-02T19:00:00+00:00
+        )
+
+    [29] => Array
+        (
+            [id_reserva] => 122
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-08-09 18:00:00
+            [fecha_fin_prestamo] => 2017-08-09 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 122
+            [title] => Robótica
+            [start] => 2017-08-09T18:00:00+00:00
+            [end] => 2017-08-09T19:00:00+00:00
+        )
+
+    [30] => Array
+        (
+            [id_reserva] => 123
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-08-16 18:00:00
+            [fecha_fin_prestamo] => 2017-08-16 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 123
+            [title] => Robótica
+            [start] => 2017-08-16T18:00:00+00:00
+            [end] => 2017-08-16T19:00:00+00:00
+        )
+
+    [31] => Array
+        (
+            [id_reserva] => 124
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-08-23 18:00:00
+            [fecha_fin_prestamo] => 2017-08-23 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 124
+            [title] => Robótica
+            [start] => 2017-08-23T18:00:00+00:00
+            [end] => 2017-08-23T19:00:00+00:00
+        )
+
+    [32] => Array
+        (
+            [id_reserva] => 125
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-08-30 18:00:00
+            [fecha_fin_prestamo] => 2017-08-30 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 125
+            [title] => Robótica
+            [start] => 2017-08-30T18:00:00+00:00
+            [end] => 2017-08-30T19:00:00+00:00
+        )
+
+    [33] => Array
+        (
+            [id_reserva] => 126
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-09-06 18:00:00
+            [fecha_fin_prestamo] => 2017-09-06 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 126
+            [title] => Robótica
+            [start] => 2017-09-06T18:00:00+00:00
+            [end] => 2017-09-06T19:00:00+00:00
+        )
+
+    [34] => Array
+        (
+            [id_reserva] => 127
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-09-13 18:00:00
+            [fecha_fin_prestamo] => 2017-09-13 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 127
+            [title] => Robótica
+            [start] => 2017-09-13T18:00:00+00:00
+            [end] => 2017-09-13T19:00:00+00:00
+        )
+
+    [35] => Array
+        (
+            [id_reserva] => 128
+            [fecha_reserva] => 2016-12-09 10:30:00
+            [fecha_ini_prestamo] => 2016-12-05 11:00:00
+            [fecha_fin_prestamo] => 2016-12-05 10:00:00
+            [descripcion] => 
+            [id_usuario] => 182
+            [color] => #8000ff
+            [nombre] => leonel
+            [id] => 128
+            [title] => 
+            [start] => 2016-12-05T11:00:00+00:00
+            [end] => 2016-12-05T10:00:00+00:00
+        )
+
+    [36] => Array
+        (
+            [id_reserva] => 129
+            [fecha_reserva] => 2016-12-11 12:27:00
+            [fecha_ini_prestamo] => 2016-12-06 08:00:00
+            [fecha_fin_prestamo] => 2016-12-06 10:00:00
+            [descripcion] => 
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 129
+            [title] => 
+            [start] => 2016-12-06T08:00:00+00:00
+            [end] => 2016-12-06T10:00:00+00:00
+        )
+
+)
+
+[21-Dec-2016 23:12:59 America/Bogota] SELECT cronograma.id_reserva, cronograma.fecha_reserva,cronograma.fecha_ini_prestamo, cronograma.fecha_fin_prestamo,cronograma.descripcion, cronograma.id_usuario,sala.color,usuario.nombre FROM cronograma,sala,usuario WHERE cronograma.id_sala=sala.id_sala and usuario.id_usuario=cronograma.id_usuario
+[22-Dec-2016 04:12:59 UTC] Array
+(
+    [0] => Array
+        (
+            [id_reserva] => 95
+            [fecha_reserva] => 2016-12-07 16:23:00
+            [fecha_ini_prestamo] => 2016-12-05 07:00:00
+            [fecha_fin_prestamo] => 2016-12-05 08:30:00
+            [descripcion] => 
+            [id_usuario] => 176
+            [color] => #f16dcb
+            [nombre] => ofelia
+            [id] => 95
+            [title] => 
+            [start] => 2016-12-05T07:00:00+00:00
+            [end] => 2016-12-05T08:30:00+00:00
+        )
+
+    [1] => Array
+        (
+            [id_reserva] => 90
+            [fecha_reserva] => 2016-12-02 21:18:00
+            [fecha_ini_prestamo] => 2017-02-02 18:00:00
+            [fecha_fin_prestamo] => 2017-02-02 20:00:00
+            [descripcion] => Clase lo que sea
+            [id_usuario] => 173
+            [color] => #f16dcb
+            [nombre] => jhoan
+            [id] => 90
+            [title] => Clase lo que sea
+            [start] => 2017-02-02T18:00:00+00:00
+            [end] => 2017-02-02T20:00:00+00:00
+        )
+
+    [2] => Array
+        (
+            [id_reserva] => 94
+            [fecha_reserva] => 2016-12-06 23:12:00
+            [fecha_ini_prestamo] => 2016-12-16 00:00:00
+            [fecha_fin_prestamo] => 2016-12-17 02:30:00
+            [descripcion] => Monitoria sala
+            [id_usuario] => 170
+            [color] => #8000ff
+            [nombre] => pedro
+            [id] => 94
+            [title] => Monitoria sala
+            [start] => 2016-12-16T00:00:00+00:00
+            [end] => 2016-12-17T02:30:00+00:00
+        )
+
+    [3] => Array
+        (
+            [id_reserva] => 96
+            [fecha_reserva] => 2016-12-07 16:26:00
+            [fecha_ini_prestamo] => 2016-12-01 08:00:00
+            [fecha_fin_prestamo] => 2016-12-01 10:00:00
+            [descripcion] => Monitoria TGS
+            [id_usuario] => 190
+            [color] => #f16dcb
+            [nombre] => nataly
+            [id] => 96
+            [title] => Monitoria TGS
+            [start] => 2016-12-01T08:00:00+00:00
+            [end] => 2016-12-01T10:00:00+00:00
+        )
+
+    [4] => Array
+        (
+            [id_reserva] => 97
+            [fecha_reserva] => 2016-12-07 16:43:00
+            [fecha_ini_prestamo] => 2016-12-01 08:00:00
+            [fecha_fin_prestamo] => 2016-12-01 11:00:00
+            [descripcion] => Introducción a la ingeniería
+            [id_usuario] => 187
+            [color] => #000000
+            [nombre] => alberto
+            [id] => 97
+            [title] => Introducción a la ingeniería
+            [start] => 2016-12-01T08:00:00+00:00
+            [end] => 2016-12-01T11:00:00+00:00
+        )
+
+    [5] => Array
+        (
+            [id_reserva] => 98
+            [fecha_reserva] => 2016-12-07 17:18:00
+            [fecha_ini_prestamo] => 2016-12-01 08:00:00
+            [fecha_fin_prestamo] => 2016-12-01 10:00:00
+            [descripcion] => Clase de especiales
+            [id_usuario] => 150
+            [color] => #000000
+            [nombre] => pepe l
+            [id] => 98
+            [title] => Clase de especiales
+            [start] => 2016-12-01T08:00:00+00:00
+            [end] => 2016-12-01T10:00:00+00:00
+        )
+
+    [6] => Array
+        (
+            [id_reserva] => 99
+            [fecha_reserva] => 2016-12-07 19:35:00
+            [fecha_ini_prestamo] => 2016-11-08 19:00:00
+            [fecha_fin_prestamo] => 2016-11-08 20:00:00
+            [descripcion] => 
+            [id_usuario] => 182
+            [color] => #f16dcb
+            [nombre] => leonel
+            [id] => 99
+            [title] => 
+            [start] => 2016-11-08T19:00:00+00:00
+            [end] => 2016-11-08T20:00:00+00:00
+        )
+
+    [7] => Array
+        (
+            [id_reserva] => 100
+            [fecha_reserva] => 2016-12-07 19:35:00
+            [fecha_ini_prestamo] => 2016-11-15 19:00:00
+            [fecha_fin_prestamo] => 2016-11-15 20:00:00
+            [descripcion] => 
+            [id_usuario] => 182
+            [color] => #f16dcb
+            [nombre] => leonel
+            [id] => 100
+            [title] => 
+            [start] => 2016-11-15T19:00:00+00:00
+            [end] => 2016-11-15T20:00:00+00:00
+        )
+
+    [8] => Array
+        (
+            [id_reserva] => 101
+            [fecha_reserva] => 2016-12-07 19:35:00
+            [fecha_ini_prestamo] => 2016-11-22 19:00:00
+            [fecha_fin_prestamo] => 2016-11-22 20:00:00
+            [descripcion] => 
+            [id_usuario] => 182
+            [color] => #f16dcb
+            [nombre] => leonel
+            [id] => 101
+            [title] => 
+            [start] => 2016-11-22T19:00:00+00:00
+            [end] => 2016-11-22T20:00:00+00:00
+        )
+
+    [9] => Array
+        (
+            [id_reserva] => 102
+            [fecha_reserva] => 2016-12-07 19:35:00
+            [fecha_ini_prestamo] => 2016-11-29 19:00:00
+            [fecha_fin_prestamo] => 2016-11-29 20:00:00
+            [descripcion] => 
+            [id_usuario] => 182
+            [color] => #f16dcb
+            [nombre] => leonel
+            [id] => 102
+            [title] => 
+            [start] => 2016-11-29T19:00:00+00:00
+            [end] => 2016-11-29T20:00:00+00:00
+        )
+
+    [10] => Array
+        (
+            [id_reserva] => 103
+            [fecha_reserva] => 2016-12-07 19:35:00
+            [fecha_ini_prestamo] => 2016-12-06 19:00:00
+            [fecha_fin_prestamo] => 2016-12-06 20:00:00
+            [descripcion] => 
+            [id_usuario] => 182
+            [color] => #f16dcb
+            [nombre] => leonel
+            [id] => 103
+            [title] => 
+            [start] => 2016-12-06T19:00:00+00:00
+            [end] => 2016-12-06T20:00:00+00:00
+        )
+
+    [11] => Array
+        (
+            [id_reserva] => 104
+            [fecha_reserva] => 2016-12-07 19:38:00
+            [fecha_ini_prestamo] => 2016-12-07 20:00:00
+            [fecha_fin_prestamo] => 2016-12-07 21:00:00
+            [descripcion] => 
+            [id_usuario] => 178
+            [color] => #8000ff
+            [nombre] => yhordan
+            [id] => 104
+            [title] => 
+            [start] => 2016-12-07T20:00:00+00:00
+            [end] => 2016-12-07T21:00:00+00:00
+        )
+
+    [12] => Array
+        (
+            [id_reserva] => 105
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-04-12 18:00:00
+            [fecha_fin_prestamo] => 2017-04-12 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 105
+            [title] => Robótica
+            [start] => 2017-04-12T18:00:00+00:00
+            [end] => 2017-04-12T19:00:00+00:00
+        )
+
+    [13] => Array
+        (
+            [id_reserva] => 106
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-04-19 18:00:00
+            [fecha_fin_prestamo] => 2017-04-19 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 106
+            [title] => Robótica
+            [start] => 2017-04-19T18:00:00+00:00
+            [end] => 2017-04-19T19:00:00+00:00
+        )
+
+    [14] => Array
+        (
+            [id_reserva] => 107
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-04-26 18:00:00
+            [fecha_fin_prestamo] => 2017-04-26 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 107
+            [title] => Robótica
+            [start] => 2017-04-26T18:00:00+00:00
+            [end] => 2017-04-26T19:00:00+00:00
+        )
+
+    [15] => Array
+        (
+            [id_reserva] => 108
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-05-03 18:00:00
+            [fecha_fin_prestamo] => 2017-05-03 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 108
+            [title] => Robótica
+            [start] => 2017-05-03T18:00:00+00:00
+            [end] => 2017-05-03T19:00:00+00:00
+        )
+
+    [16] => Array
+        (
+            [id_reserva] => 109
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-05-10 18:00:00
+            [fecha_fin_prestamo] => 2017-05-10 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 109
+            [title] => Robótica
+            [start] => 2017-05-10T18:00:00+00:00
+            [end] => 2017-05-10T19:00:00+00:00
+        )
+
+    [17] => Array
+        (
+            [id_reserva] => 110
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-05-17 18:00:00
+            [fecha_fin_prestamo] => 2017-05-17 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 110
+            [title] => Robótica
+            [start] => 2017-05-17T18:00:00+00:00
+            [end] => 2017-05-17T19:00:00+00:00
+        )
+
+    [18] => Array
+        (
+            [id_reserva] => 111
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-05-24 18:00:00
+            [fecha_fin_prestamo] => 2017-05-24 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 111
+            [title] => Robótica
+            [start] => 2017-05-24T18:00:00+00:00
+            [end] => 2017-05-24T19:00:00+00:00
+        )
+
+    [19] => Array
+        (
+            [id_reserva] => 112
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-05-31 18:00:00
+            [fecha_fin_prestamo] => 2017-05-31 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 112
+            [title] => Robótica
+            [start] => 2017-05-31T18:00:00+00:00
+            [end] => 2017-05-31T19:00:00+00:00
+        )
+
+    [20] => Array
+        (
+            [id_reserva] => 113
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-06-07 18:00:00
+            [fecha_fin_prestamo] => 2017-06-07 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 113
+            [title] => Robótica
+            [start] => 2017-06-07T18:00:00+00:00
+            [end] => 2017-06-07T19:00:00+00:00
+        )
+
+    [21] => Array
+        (
+            [id_reserva] => 114
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-06-14 18:00:00
+            [fecha_fin_prestamo] => 2017-06-14 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 114
+            [title] => Robótica
+            [start] => 2017-06-14T18:00:00+00:00
+            [end] => 2017-06-14T19:00:00+00:00
+        )
+
+    [22] => Array
+        (
+            [id_reserva] => 115
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-06-21 18:00:00
+            [fecha_fin_prestamo] => 2017-06-21 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 115
+            [title] => Robótica
+            [start] => 2017-06-21T18:00:00+00:00
+            [end] => 2017-06-21T19:00:00+00:00
+        )
+
+    [23] => Array
+        (
+            [id_reserva] => 116
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-06-28 18:00:00
+            [fecha_fin_prestamo] => 2017-06-28 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 116
+            [title] => Robótica
+            [start] => 2017-06-28T18:00:00+00:00
+            [end] => 2017-06-28T19:00:00+00:00
+        )
+
+    [24] => Array
+        (
+            [id_reserva] => 117
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-07-05 18:00:00
+            [fecha_fin_prestamo] => 2017-07-05 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 117
+            [title] => Robótica
+            [start] => 2017-07-05T18:00:00+00:00
+            [end] => 2017-07-05T19:00:00+00:00
+        )
+
+    [25] => Array
+        (
+            [id_reserva] => 118
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-07-12 18:00:00
+            [fecha_fin_prestamo] => 2017-07-12 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 118
+            [title] => Robótica
+            [start] => 2017-07-12T18:00:00+00:00
+            [end] => 2017-07-12T19:00:00+00:00
+        )
+
+    [26] => Array
+        (
+            [id_reserva] => 119
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-07-19 18:00:00
+            [fecha_fin_prestamo] => 2017-07-19 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 119
+            [title] => Robótica
+            [start] => 2017-07-19T18:00:00+00:00
+            [end] => 2017-07-19T19:00:00+00:00
+        )
+
+    [27] => Array
+        (
+            [id_reserva] => 120
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-07-26 18:00:00
+            [fecha_fin_prestamo] => 2017-07-26 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 120
+            [title] => Robótica
+            [start] => 2017-07-26T18:00:00+00:00
+            [end] => 2017-07-26T19:00:00+00:00
+        )
+
+    [28] => Array
+        (
+            [id_reserva] => 121
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-08-02 18:00:00
+            [fecha_fin_prestamo] => 2017-08-02 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 121
+            [title] => Robótica
+            [start] => 2017-08-02T18:00:00+00:00
+            [end] => 2017-08-02T19:00:00+00:00
+        )
+
+    [29] => Array
+        (
+            [id_reserva] => 122
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-08-09 18:00:00
+            [fecha_fin_prestamo] => 2017-08-09 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 122
+            [title] => Robótica
+            [start] => 2017-08-09T18:00:00+00:00
+            [end] => 2017-08-09T19:00:00+00:00
+        )
+
+    [30] => Array
+        (
+            [id_reserva] => 123
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-08-16 18:00:00
+            [fecha_fin_prestamo] => 2017-08-16 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 123
+            [title] => Robótica
+            [start] => 2017-08-16T18:00:00+00:00
+            [end] => 2017-08-16T19:00:00+00:00
+        )
+
+    [31] => Array
+        (
+            [id_reserva] => 124
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-08-23 18:00:00
+            [fecha_fin_prestamo] => 2017-08-23 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 124
+            [title] => Robótica
+            [start] => 2017-08-23T18:00:00+00:00
+            [end] => 2017-08-23T19:00:00+00:00
+        )
+
+    [32] => Array
+        (
+            [id_reserva] => 125
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-08-30 18:00:00
+            [fecha_fin_prestamo] => 2017-08-30 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 125
+            [title] => Robótica
+            [start] => 2017-08-30T18:00:00+00:00
+            [end] => 2017-08-30T19:00:00+00:00
+        )
+
+    [33] => Array
+        (
+            [id_reserva] => 126
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-09-06 18:00:00
+            [fecha_fin_prestamo] => 2017-09-06 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 126
+            [title] => Robótica
+            [start] => 2017-09-06T18:00:00+00:00
+            [end] => 2017-09-06T19:00:00+00:00
+        )
+
+    [34] => Array
+        (
+            [id_reserva] => 127
+            [fecha_reserva] => 2016-12-08 17:30:00
+            [fecha_ini_prestamo] => 2017-09-13 18:00:00
+            [fecha_fin_prestamo] => 2017-09-13 19:00:00
+            [descripcion] => Robótica
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 127
+            [title] => Robótica
+            [start] => 2017-09-13T18:00:00+00:00
+            [end] => 2017-09-13T19:00:00+00:00
+        )
+
+    [35] => Array
+        (
+            [id_reserva] => 128
+            [fecha_reserva] => 2016-12-09 10:30:00
+            [fecha_ini_prestamo] => 2016-12-05 11:00:00
+            [fecha_fin_prestamo] => 2016-12-05 10:00:00
+            [descripcion] => 
+            [id_usuario] => 182
+            [color] => #8000ff
+            [nombre] => leonel
+            [id] => 128
+            [title] => 
+            [start] => 2016-12-05T11:00:00+00:00
+            [end] => 2016-12-05T10:00:00+00:00
+        )
+
+    [36] => Array
+        (
+            [id_reserva] => 129
+            [fecha_reserva] => 2016-12-11 12:27:00
+            [fecha_ini_prestamo] => 2016-12-06 08:00:00
+            [fecha_fin_prestamo] => 2016-12-06 10:00:00
+            [descripcion] => 
+            [id_usuario] => 171
+            [color] => #f16dcb
+            [nombre] => juan
+            [id] => 129
+            [title] => 
+            [start] => 2016-12-06T08:00:00+00:00
+            [end] => 2016-12-06T10:00:00+00:00
+        )
+
+)
+

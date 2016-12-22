@@ -33,81 +33,82 @@ $(document).on('ready', function () {
     $("#index-parte").css({'width': '13em'});
     $("#index-cronograma").css({'width': '13em'});
     $("#index-sede").css({'width': '13em'});
-    
+
 
     $("#index-asignatura").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/asignatura.html");
+        cargarPagina("#index-contenido", "vista/html/asignatura.html");
     });
     $("#index-externo").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/externo.html");
+        cargarPagina("#index-contenido", "vista/html/externo.html");
     });
-	$("#index-prestamo_equipo").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/prestamo_equipo.html");
+    $("#index-prestamo_equipo").button().on("click", function () {
+        cargarPagina("#index-contenido", "vista/html/prestamo_equipo.html");
 
     });
-	$("#index-horas_disponibles_monitor").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/horas_disponibles_monitor.html");
+    $("#index-horas_disponibles_monitor").button().on("click", function () {
+        cargarPagina("#index-contenido", "vista/html/horas_disponibles_monitor.html");
 
     });
-	$("#index-parte_equipo").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/parte_equipo.html");
+    $("#index-parte_equipo").button().on("click", function () {
+        cargarPagina("#index-contenido", "vista/html/parte_equipo.html");
 
     });
-	$("#index-grupo").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/grupo.html");
+    $("#index-grupo").button().on("click", function () {
+        cargarPagina("#index-contenido", "vista/html/grupo.html");
 
     });
-	
-	$("#index-bloque").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/bloque.html");
+
+    $("#index-bloque").button().on("click", function () {
+        cargarPagina("#index-contenido", "vista/html/bloque.html");
 
     });
-	$("#index-equipos_sala").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/equipos_sala.html");
+    $("#index-equipos_sala").button().on("click", function () {
+        cargarPagina("#index-contenido", "vista/html/equipos_sala.html");
 
     });
-	$("#index-sala").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/sala.html");
-
-    });	
-	
-	$("#index-docente").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/docente.html");
+    $("#index-sala").button().on("click", function () {
+        cargarPagina("#index-contenido", "vista/html/sala.html");
 
     });
-	$("#index-administrativo").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/administrativo.html");
+
+    $("#index-docente").button().on("click", function () {
+        cargarPagina("#index-contenido", "vista/html/docente.html");
 
     });
-	$("#index-monitor").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/monitor.html");
+    $("#index-administrativo").button().on("click", function () {
+        cargarPagina("#index-contenido", "vista/html/administrativo.html");
 
     });
-	
-	$("#index-reporte_danos").button().on("click", function () {
-		cargarPagina("#CRUDS-contenido", "vista/html/reporte_danos.html");
+    $("#index-monitor").button().on("click", function () {
+        cargarPagina("#index-contenido", "vista/html/monitor.html");
 
     });
-	
-	$("#index-calendario").button().on('click', function() {
-        cargarPagina("#CRUDS-contenido","vista/html/calendario.html");        
+
+    $("#index-reporte_danos").button().on("click", function () {
+        cargarPagina("#index-contenido", "vista/html/reporte_danos.html");
+
     });
-	
-	$("#index-sede").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/sede.html");
+
+    $("#index-calendario").button().on('click', function () {
+        cargarPagina("#index-contenido", "vista/html/calendario.html");
+    });
+
+    $("#index-sede").button().on("click", function () {
+        cargarPagina("#index-contenido", "vista/html/sede.html");
 
     });
 
     $("#index-equipos_para_prestamos").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/equipos_para_prestamos.html");
+        cargarPagina("#index-contenido", "vista/html/equipos_para_prestamos.html");
 
-    });$("#index-cronograma").button().on("click", function () {
-        cargarPagina("#CRUDS-contenido", "vista/html/cronograma.html");
+    });
+    $("#index-cronograma").button().on("click", function () {
+        cargarPagina("#index-contenido", "vista/html/cronograma.html");
 
     });
 
-   
-	
+
+
     // un ejemplo de uso de selectores jQuery para controlar eventos sobre links
     $("#index-menu-superior li a").each(function () {
         var opcion = $(this).text();
@@ -138,12 +139,12 @@ $(document).on('ready', function () {
     });
 
     // ejemplo de llamado de una instrucción $.post
- /*   $.post("controlador/fachada.php", {
-        clase: 'UtilConexion',
-        oper: 'getEstados'
-    }, function (estados) {
-        //console.log(estados);
-    }, 'json');*/
+    /*   $.post("controlador/fachada.php", {
+     clase: 'UtilConexion',
+     oper: 'getEstados'
+     }, function (estados) {
+     //console.log(estados);
+     }, 'json');*/
 
     // cada que se redimensione el navegador se actualiza anchoContenedor
     $(window).on('resize', function () {

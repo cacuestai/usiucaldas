@@ -20,11 +20,11 @@ define('PHPWORD_ROOT', '../../includes/PHPWord/');
 define('TMP_PATH', sys_get_temp_dir() . DIRECTORY_SEPARATOR);
 
 // Atributos de la conexión a la base de datos (remota)
-define('BASE_DATOS', 'usi');
-define('SERVIDOR', 'phpma.dijansoft.xyz');
+define('BASE_DATOS', 'usidbreservas');
+define('SERVIDOR', 'localhost');
 define('PUERTO', '5432');
-define('USUARIO', 'usiuser');//postgres
-define('CONTRASENA', 'usiapp');//123456
+define('USUARIO', 'postgres');//postgres
+define('CONTRASENA', '1-876-888');//123456
 
 //conexion a BD local
 /*define('BASE_DATOS', 'Proyecto_USI');

@@ -2,23 +2,24 @@
  * Created by Jhonatan Ballesteros on 13/11/2016.
  */
 
-$(document).ready(function() {
+$(document).ready(function () {
     var calendario;
-    var filtro="Sala";
+    var filtro = "Sala";
     var anchoEtiquetas = 100;
     var anchoContenedor = 500;
-    var lista_Actividades = ["Selecciones una actividad","Monitoria", "Clase", "Evento"];
-    var filtros=["Seleccione un Filtro","Docente","Sala","Monitor"];
+    var lista_Actividades = ["Selecciones una actividad", "Monitoria", "Clase", "Evento"];
+    var filtros = ["Seleccione un Filtro", "Docente", "Sala", "Monitor"];
+    
     jQuery('#calendario-start').datetimepicker({
         step: 30, // listado de horas con cambio cada media hora
         format: 'Y-m-d H:i'
     });
+    
     jQuery('#calendario-end').datetimepicker(
-
-        {
-            step: 30, // listado de horas con cambio cada media hora
-            format: 'Y-m-d H:i'
-        }
+            {
+                step: 30, // listado de horas con cambio cada media hora
+                format: 'Y-m-d H:i'
+            }
     );
 
     for (var i = 0; i < lista_Actividades.length; i++) {
@@ -47,14 +48,14 @@ $(document).ready(function() {
             $('#calendario-usuario').html(lista_monitores);
 
         }
-        else if (this.value ==2 || this.value == 3) {
+        else if (this.value == 2 || this.value == 3) {
 
             var lista_docentes = getElementos({'clase': 'docente', 'oper': 'getSelectDocente', 'json': true});
             $('#calendario-usuario').html(lista_docentes);
         }
     });
-    $('#calendario-filtros').on('change',function () {
-        if(this.value=='Docente'||this.value=='Monitor'||this.value=='Sala') {
+    $('#calendario-filtros').on('change', function () {
+        if (this.value == 'Docente' || this.value == 'Monitor' || this.value == 'Sala') {
 
             filtro = this.value;
             calendario.fullCalendar("refetchEvents");
@@ -75,6 +76,7 @@ $(document).ready(function() {
         height: 280,
         modal: true
     });
+    
     // página cargada, inicializamos el calendario...
     calendario = $('#calendario-calendario').fullCalendar({
         theme: true,
@@ -89,7 +91,6 @@ $(document).ready(function() {
         selectable: true,
         selectHelper: true,
         editable: true,
-
         select: function (start, end) {
 
             nuevaActividad(start, end);
@@ -109,7 +110,7 @@ $(document).ready(function() {
                     caso: filtro
                 }
             }, error: function () {
-               // mostrarMensaje('Problemas al intentar cargar los turnos', '#turno_produccion-mensaje')
+                // mostrarMensaje('Problemas al intentar cargar los turnos', '#turno_produccion-mensaje')
             }
 
         },
@@ -124,13 +125,13 @@ $(document).ready(function() {
             // Desplegar información complementaria del turno
             element.qtip({
                 content: {
-                    text: event.descripcion+"\nusuario:"+event.nombre
+                    text: event.descripcion + "\nusuario:" + event.nombre
                 }
             });
         }
     });
 
-    function mostrarInformacion(evento){
+    function mostrarInformacion(evento) {
 
     }
     function nuevaActividad(start, end) {
@@ -144,15 +145,15 @@ $(document).ready(function() {
         var formulario = $("#calendario-dialog").dialog("option", "buttons", [
             {
                 id: "btnGuardar", text: "Guardar", click: function () {
-                //aca va el metodo para agregar una actividad
+                    //aca va el metodo para agregar una actividad
                     agregarActividad(formulario);
 
-            }
+                }
             },
             {
                 id: "btnCancelar", text: "Cancelar", icons: {primary: "ui-icon-close"}, click: function () {
-                $(this).dialog("close");
-            }
+                    $(this).dialog("close");
+                }
             }
         ]).dialog("open");
     }
@@ -164,29 +165,29 @@ $(document).ready(function() {
         $("#calendario-end").val(event.end.format("YYYY-MM-DD HH:mm"));
 
         var formulario = $("#calendario-dialog").dialog("option", "buttons", [
-            {   id: "btnGuardar", text: "Guardar", click: function () {
-                //aca va el metodo para agregar una actividad
+            {id: "btnGuardar", text: "Guardar", click: function () {
+                    //aca va el metodo para agregar una actividad
                     agregarActividad(formulario);
-            }
+                }
             },
             {
                 id: "btnActualizar", text: "Actualizar", click: function () {
-                //aca va el metodo para editar la actividad
-                editarActividad(formulario,event);
-            }
+                    //aca va el metodo para editar la actividad
+                    editarActividad(formulario, event);
+                }
             },
             {
                 id: "btnEliminar", text: "Eliminar", click: function () {
-                //aca va el metodo para eliminar una actividad
-                    eliminarActividad(formulario,event);
-            }
+                    //aca va el metodo para eliminar una actividad
+                    eliminarActividad(formulario, event);
+                }
             },
             {
                 id: "btnCancelar", text: "Cancelar", icons: {primary: "ui-icon-close"}, click: function () {
-                $(this).dialog("close");
+                    $(this).dialog("close");
+                }
             }
-            }            
-            
+
         ]).dialog("open");
     }
 
@@ -199,11 +200,11 @@ $(document).ready(function() {
         var end = $("#calendario-end").val();
 
         var sala = $("#calendario-sala").val();
-        var fecha_reserva=calendario.fullCalendar('getDate').format('YYYY-MM-DD H:mm'); //la hroa y fecha del regustro de la actividad
+        var fecha_reserva = calendario.fullCalendar('getDate').format('YYYY-MM-DD H:mm'); //la hroa y fecha del regustro de la actividad
 
-        var tipo=$("#calendario-actividad").val();
-        var descripcion=$("#calendario-descripcion").val();
-        var estado_reserva=0;
+        var tipo = $("#calendario-actividad").val();
+        var descripcion = $("#calendario-descripcion").val();
+        var estado_reserva = 0;
         //alert(idUsuario+"\n"+start+"\n"+end+"\n"+sala+"\n"+fecha_reserva+"\n"+estado_reserva+"\n"+tipo+"\n"+descripcion+"\n");
         // si start y end de los campos tiene dato, reemplazar lo que llega como argumentos
         // si end es vacío, entonces start + 1 hora
@@ -215,18 +216,18 @@ $(document).ready(function() {
                 fecha_ini_prestamo: start,
                 fecha_fin_prestamo: end,
                 id_sala: sala,
-                fecha_reserva:fecha_reserva,
-                descripcion:descripcion,
-                tipo:tipo,
-                estado_reserva:estado_reserva
-                // y así sucesivamente para otros campos que hagan falta
-                //title: $("#turno_produccion-maquina option:selected").text(),
-                //color: $("#turno_produccion-maquina option:selected").attr('color')
+                fecha_reserva: fecha_reserva,
+                descripcion: descripcion,
+                tipo: tipo,
+                estado_reserva: estado_reserva
+                        // y así sucesivamente para otros campos que hagan falta
+                        //title: $("#turno_produccion-maquina option:selected").text(),
+                        //color: $("#turno_produccion-maquina option:selected").attr('color')
             };
-            var datosConcatenados={
-              title:descripcion,
-               start:start,
-                end:end
+            var datosConcatenados = {
+                title: descripcion,
+                start: start,
+                end: end
             };
             $.post("controlador/fachada.php", {
                 clase: 'cronograma',
@@ -264,13 +265,13 @@ $(document).ready(function() {
             evento.id_usuario = idUsuario;
             evento.start = start;
             evento.end = end;
-            evento.fecha_ini_prestamo=start;
-            evento.fecha_fin_prestamo=end;
-            evento.id_sala=$("#calendario-sala").val();
-            evento.tipo=$("#calendario-actividad").val();
-            evento.descripcion=$("#calendario-descripcion").val();
+            evento.fecha_ini_prestamo = start;
+            evento.fecha_fin_prestamo = end;
+            evento.id_sala = $("#calendario-sala").val();
+            evento.tipo = $("#calendario-actividad").val();
+            evento.descripcion = $("#calendario-descripcion").val();
             // y así sucesivamente para otros campos
-            evento.title = $("#calendario-descripcion").val()+" En la"+$("#calendario-sala").val();
+            evento.title = $("#calendario-descripcion").val() + " En la" + $("#calendario-sala").val();
             //evento.color = $("#calendario-usuario option:selected").attr('color');
 
             $.post("controlador/fachada.php", {
@@ -282,10 +283,10 @@ $(document).ready(function() {
                     id_usuario: idUsuario,
                     start: start,
                     end: end,
-                    sala:evento.id_sala,
-                    tipo:evento.tipo,
-                    descripcion:evento.descripcion
-                    }
+                    sala: evento.id_sala,
+                    tipo: evento.tipo,
+                    descripcion: evento.descripcion
+                }
             }, function (data) {
 
                 if (data.ok) {
