@@ -13,53 +13,21 @@ $(function () {
         altoGrid = 200;
     }
 
-    var clase = 'equipos_para_prestamo';  // la clase que implementa el CRUD para este grid
+    var clase = 'EquiposParaPrestamo';  // la clase que implementa el CRUD para este grid
     var idPager = 'equipos_prestamo-pager';  // la barra de navegación del grid ubicada en la parte inferior
-	
-	var field1, check_function1 = function (value, colname)
-    {
-
-        if (colname === "nombre") {
-            field1 = value;
-        }
-        if (value.length < 3) {
-            return [false, "El nombre debe tener minimo 3 caracteres"];
-        } else
-        {
-            return [true];
-        }
-        return [true];
-    };
-
-    var field1, check_function2 = function (value, colname)
-    {
-        if (colname === "descripcion") {
-            field1 = value;
-        }
-        if (value.length >51 ) {
-            
-            return [false, "la descripcion debe tener maximo de 50 caracateres"];
-        } else
-        {
-            return [true];
-        }
-        return [true];
-    };
 
     // las columnas de un grid se definen como un array de objetos con múltiples atributos
     var columnas = [
 //        {'label': 'id de solicitud', name: 'id_equipo_prestamo', index: 'id_equipo_prestamo', width: 80, sortable: true, editable: true, editrules: {required: true, number: true, minValue: 1},
 //            editoptions: {dataInit: asignarAncho}
 //        },
-        
+
         {'label': 'nombre del equipo', name: 'nombre', index: 'nombre', width: 80, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},
             editoptions: {dataInit: asignarAncho}
         },
-        
         {'label': 'Descripci&oacute;n del Equipo', name: 'descripcion', index: 'descripcion', width: 80, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},
             editoptions: {dataInit: asignarAncho}
         },
-        
         {'label': 'estado', name: 'estado', index: 'estado', width: 80, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},
             editoptions: {dataInit: asignarAncho}
         }
@@ -144,7 +112,7 @@ $(function () {
      * @param {type} columna nombre con que está etiquetada la columna
      * @returns {Array} un array indicando si la validación fue exitosa o no
      */
-    function validarOrdenProduccion(valor, columna) {
+    function validarEJEMPLO(valor, columna) {
 
         if (columna == 'id_equipo_para_prestamo') {
             if (valor === '0') {
@@ -156,19 +124,19 @@ $(function () {
                 return [false, "Falta seleccionar nombre de equipo para prestamo"];
             }
         }
-        if (columna=='descripcion') 
+        if (columna == 'descripcion')
         {
             if (valor === '0') {
                 return [false, "Falta seleccionar descripcion de equipo para prestamo"];
-            }   
+            }
         }
-        if (columna=='estado') 
+        if (columna == 'estado')
         {
             if (valor === '0') {
                 return [false, "Falta seleccionar estado de equipo para prestamo"];
-            }   
-        }        
-		if (columna == 'id de solicitud') {
+            }
+        }
+        if (columna == 'id de solicitud') {
             if (valor === '0') {
                 return [false, "Falta seleccionar la peticion"];
             }

@@ -13,12 +13,10 @@ $(function () {
         altoGrid = 200;
     }
 
-    var clase = 'docente';  // la clase que implementa el CRUD para este grid
+    var clase = 'Docente';  // la clase que implementa el CRUD para este grid
     var idPager = 'docente-pager';  // la barra de navegación del grid ubicada en la parte inferior
 
-     var field1, check_function1 = function (value, colname)
-    {
-
+    var field1, check_function1 = function (value, colname) {
         if (colname === "nombre") {
             field1 = value;
         }
@@ -33,9 +31,7 @@ $(function () {
         return [true];
     };
 
-    var field1, check_function2 = function (value, colname)
-    {
-
+    var field1, check_function2 = function (value, colname) {
         if (colname === "apellido") {
             field1 = value;
         }
@@ -50,9 +46,8 @@ $(function () {
 
         return [true];
     };
-    var field1, check_function3 = function (value, colname)
-    {
 
+    var field1, check_function3 = function (value, colname) {
         if (colname === "correo") {
             field1 = value;
         }
@@ -63,8 +58,8 @@ $(function () {
         }
         return [true];
     };
-    var field1, check_function4 = function (value, colname)
-    {
+
+    var field1, check_function4 = function (value, colname) {
 
         if (colname === "contrasena") {
             field1 = value;
@@ -78,41 +73,35 @@ $(function () {
 
     // las columnas de un grid se definen como un array de objetos con múltiples atributos
     var columnas = [
-        {'label': 'Id Docente', name: 'id_usuario', index: 'id_usuario', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},
-            editoptions: {dataInit: asignarAncho}
-        },
-        {'label': 'Tipo Documento', name: 'tipo_doc', index: 'tipo_doc', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},edittype:'select',
+        {'label': 'Tipo Documento', name: 'tipo_doc', index: 'tipo_doc', width: 120, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1}, edittype: 'select',
             editoptions: {
                 dataInit: asignarAncho,
-                value:tipoDoc
+                value: tipoDoc
             }
-        },        
+        },
+        {'label': 'Id Docente', name: 'id_usuario', index: 'id_usuario', width: 100, align: 'right', sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},
+            editoptions: {dataInit: asignarAncho}
+        },
         {'label': 'Nombre', name: 'nombre', index: 'nombre', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function1},
             editoptions: {dataInit: asignarAncho}
         },
-		{'label': 'Apellido', name: 'apellido', index: 'apellido', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function2},
+        {'label': 'Apellido', name: 'apellido', index: 'apellido', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function2},
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'Correo', name: 'correo', index: 'correo', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function3},
+        {'label': 'Correo', name: 'correo', index: 'correo', width: 200, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function3},
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'Contrase&ntilde;a', name: 'contrasena', index: 'contrasena', width: 100, sortable: true, editable: true,hidden:true, editrules: {required: true,edithidden:true, number: false, minValue: 1, custom: true, custom_func: check_function4},edittype:'password',
+        {'label': 'Contrase&ntilde;a', name: 'contrasena', index: 'contrasena', width: 100, sortable: true, editable: true, hidden: true, editrules: {required: true, edithidden: true, number: false, minValue: 1, custom: true, custom_func: check_function4}, edittype: 'password',
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'Color', name: 'color', index: 'color', width: 100, sortable: true, editable: true,hidden:true, editrules: {required: true, number: false, minValue: 1,edithidden:true},
-            
+        {'label': 'Color', name: 'color', index: 'color', width: 100, sortable: true, editable: true, hidden: true, editrules: {required: true, number: false, minValue: 1, edithidden: true},
             editoptions: {
                 dataInit: function (e) {
                     $(e).attr("type", "color");
-                 }
+                }
             }
         }
     ];
-	
-	function valoresSelect(){
-        valores = "cedula:cedula";
-        return valores;
-    }
 
     // inicializa el grid
     var grid = jQuery('#docente-grid').jqGrid({
@@ -164,14 +153,14 @@ $(function () {
     }, {// edit
         width: 420,
         modal: true,
-		beforeSubmit: function (postdata) {   //  OJO  <<<< 
+        beforeSubmit: function (postdata) {   //  OJO  <<<< 
             postdata.color = $('#color').val();
         },
         afterSubmit: respuestaServidor
     }, {// add
         width: 420,
         modal: true,
-		beforeSubmit: function (postdata) {   //  OJO  <<<<<<<<<
+        beforeSubmit: function (postdata) {   //  OJO  <<<<<<<<<
             postdata.color = $('#color').val();
             postdata['contrasena'] = $.md5(postdata['contrasena'])
             return [true];
@@ -193,27 +182,6 @@ $(function () {
      */
     function asignarAncho(elemento) {
         $(elemento).width(260);
-    }
-
-    /**
-     * Validación personalizada de los campos de un jqGrid
-     * @param {type} valor el dato contenido en un campo
-     * @param {type} columna nombre con que está etiquetada la columna
-     * @returns {Array} un array indicando si la validación fue exitosa o no
-     */
-    function validarOrdenProduccion(valor, columna) {
-
-        if (columna == 'id_docente') {
-            if (valor === '0') {
-                return [false, "Falta seleccionar identificador usuario externo"];
-            }
-        }
-        if (columna == 'id_usuario') {
-            if (valor === '0') {
-                return [false, "Falta seleccionar identificador del usuario"];
-            }
-        }
-        return [true, ""];
     }
 
 });

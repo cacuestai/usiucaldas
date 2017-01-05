@@ -53,3 +53,20 @@ body {
 .slider .slide-up, .slider .slide-down { height: 20px; background: #07637C; text-align: center; cursor: pointer; float: right; width: 100%; position: relative; }
 
 /* ---------------------------------------------------------------------------------------------------- */
+
+/* Manejo de links */
+.referencia {
+    cursor: pointer;
+    color: #808000;
+}
+.referencia:link, a.referencia:link {color: #808000; }
+.referencia:visited, a.referencia:visited {color: #8B3A62; }
+.referencia:active, a.referencia:active {color: #0000CD; }
+.referencia:hover, a.referencia:hover {color: #CD0000;}
+
+a.menus:link {text-decoration:none; color: #556B2F; } /* Link no visitado*/
+a.menus:visited {text-decoration:none; color:#4682B4} /*Link visitado*/
+a.menus:active {text-decoration:none; color: #003399;} /*Link activo*/
+a.menus:hover {text-decoration:underline; color: #556B2F;} /*Mouse sobre el link*/
+
+/* Fin Manejo de links */

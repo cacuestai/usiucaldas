@@ -13,11 +13,10 @@ $(function () {
         altoGrid = 200;
     }
 
-    var clase = 'externo';  // la clase que implementa el CRUD para este grid
+    var clase = 'UsuarioExterno';  // la clase que implementa el CRUD para este grid
     var idPager = 'externo-pager';  // la barra de navegación del grid ubicada en la parte inferior
 
-    var field1, check_function1 = function (value, colname)
-    {
+    var field1, check_function1 = function (value, colname) {
 
         if (colname === "nombre") {
             field1 = value;
@@ -34,8 +33,7 @@ $(function () {
         return [true];
     };
 
-    var field1, check_function22 = function (value, colname)
-    {
+    var field1, check_function22 = function (value, colname) {
 
         if (colname === "apellido") {
             field1 = value;
@@ -51,8 +49,8 @@ $(function () {
 
         return [true];
     };
-    var field1, check_function3 = function (value, colname)
-    {
+
+    var field1, check_function3 = function (value, colname) {
 
         if (colname === "correo") {
             field1 = value;
@@ -64,8 +62,8 @@ $(function () {
         }
         return [true];
     };
-    var field1, check_function4 = function (value, colname)
-    {
+
+    var field1, check_function4 = function (value, colname) {
 
         if (colname === "contrasena") {
             field1 = value;
@@ -76,16 +74,17 @@ $(function () {
         }
         return [true];
     };
+
     // las columnas de un grid se definen como un array de objetos con múltiples atributos
     var columnas = [
-        {'label': 'Id Externo', name: 'id_usuario', index: 'id_usuario', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},
-            editoptions: {dataInit: asignarAncho}
-        },
-        {'label': 'Tipo Documento', name: 'tipo_doc', index: 'tipo_doc', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},edittype:'select',
+        {'label': 'Tipo Documento', name: 'tipo_doc', index: 'tipo_doc', width: 120, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1}, edittype: 'select',
             editoptions: {
                 dataInit: asignarAncho,
-                value:tipoDoc
+                value: tipoDoc
             }
+        },
+        {'label': 'Id Externo', name: 'id_usuario', index: 'id_usuario', width: 100, align: 'right', sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},
+            editoptions: {dataInit: asignarAncho}
         },
         {'label': 'Nombre', name: 'nombre', index: 'nombre', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function1},
             editoptions: {dataInit: asignarAncho}
@@ -93,17 +92,17 @@ $(function () {
         {'label': 'Apellido', name: 'apellido', index: 'apellido', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function22},
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'Correo', name: 'correo', index: 'correo', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function3},
+        {'label': 'Correo', name: 'correo', index: 'correo', width: 200, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function3},
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'contrase&ntilde;a', name: 'contrasena', index: 'contrasena', width: 100, sortable: true, editable: true,hidden:true, editrules: {required: true,edithidden:true, number: false, minValue: 1, custom: true, custom_func: check_function4},edittype:'password',
+        {'label': 'contrase&ntilde;a', name: 'contrasena', index: 'contrasena', width: 100, sortable: true, editable: true, hidden: true, editrules: {required: true, edithidden: true, number: false, minValue: 1, custom: true, custom_func: check_function4}, edittype: 'password',
             editoptions: {dataInit: asignarAncho}
         }
     ];
 
-    function valoresSelect(){
+    function valoresSelect() {
 
-        
+
         valores = "0:cedula;1:codigo";
         return valores;
     }
@@ -161,7 +160,7 @@ $(function () {
     }, {// add
         width: 420,
         modal: true,
-		beforeSubmit: function(postdata) {
+        beforeSubmit: function (postdata) {
             postdata['contrasena'] = $.md5(postdata['contrasena'])
             return [true];
         },

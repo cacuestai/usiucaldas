@@ -10,9 +10,16 @@
 
 var initDatePicker = {
     dateFormat: 'yy-mm-dd hh:ii',
-    minDate: new Date(2010, 0, 1),
-    maxDate: new Date(2020, 0, 1),
+    minDate: new Date(2015, 0, 1),
+    maxDate: new Date(2025, 0, 1),
     showOn: 'focus'
+};
+
+var initDateTimePicker = {// ver http://xdsoft.net/jqplugins/datetimepicker/
+    step: 30, // listado de horas con cambio cada media hora
+    format: 'Y-m-d H:i',
+    //datepicker: false, para desplegar horas solamente
+    opened: false
 };
 
 var anchoContenedor;
@@ -20,19 +27,71 @@ var tipoDoc;
 var diasSemana;
 var estadosEquipos;
 var tipoReserva;
+var referenciaActual; // una referencia del menú actual
 
 $(document).on('ready', function () {
 
-    $("#index-menu button").css({'width': '13em'});   
-    
-    $("#index-calendario").button().on("click", function () {
-        cargarPagina("#index-contenido", "vista/html/calendario.html");        
+    $.datetimepicker.setLocale('es');
+
+    cargarPagina("#index-menu", "vista/html/menu-basico.html", inicializarMenu);
+
+    // ajustes para el formulario de autenticación
+    $("#index-frmautentica").estiloFormulario({
+        anchoEtiquetas: '90px',
+        anchoEntradas: '200px',
+        claseFormulario: 'divForm'
+    }).dialog({
+        autoOpen: false,
+        width: 396,
+        modal: true,
+        resizable: false,
+        open: function () {
+//          $(".ui-dialog-titlebar-close").hide();  // << para cuando se requiera ocultar el botón de cerrar
+            var anchoLista = ($('#index-frmautentica > ol > li').width() - 10) + 'px';
+            $("#index-iniciar-sesion, #index-activar-cuenta").button().css('width', anchoLista);
+        },
     });
-    
-    $("#cerrar-sesion").button().on("click", function () {
-        location.reload(true);        
+
+    // Gestión del evento "Autenticarse"
+    $("#index-iniciar-sesion").button().on("click", function () {
+        autenticar().then(function (respuesta) {
+            console.log(respuesta);
+            if (respuesta.ok) {
+                if (respuesta.rol) {
+                    if (respuesta.rol === 'administrativo') {
+                        cargarPagina("#index-menu", "vista/html/menu-administrador.html", inicializarMenu);
+                    }
+                }
+                $("#index-frmautentica").dialog("close");
+            } else {
+                if (respuesta.hasOwnProperty("mensaje")) {
+                    mostrarMensaje(respuesta.mensaje, '#index-mensaje-inicio');
+                } else {
+                    mostrarMensaje('No se ha recibido una respuesta válida', '#index-mensaje-inicio');
+                }
+            }
+        });
     });
-    
+
+    function autenticar() {
+        var deferred = $.Deferred();
+
+        $.blockUI({message: getMensaje('Verificando usuario')});
+        $.post("controlador/fachada.php", {
+            clase: "Usuario",
+            oper: 'autenticar',
+            idUsuario: $("#index-nombre-usuario").val(),
+            contrasena: $.md5($('#index-contrasena').val())
+        }, function (data) {
+            deferred.resolve(data);
+        }, 'json').fail(function () {
+            mostrarMensaje("No se pudo realizar la autenticación del usuario", '#index-mensaje-inicio');
+        }).always(function () {
+            $.unblockUI();
+        });
+        return deferred.promise();
+    }
+
     // un ejemplo de uso de selectores jQuery para controlar eventos sobre links
     $("#index-menu-superior li a").each(function () {
         var opcion = $(this).text();
@@ -40,7 +99,7 @@ $(document).on('ready', function () {
         $(this).on('click', function (event) {
             switch (opcion) {
                 case "Actualidad":
-                    window.open('http://www.lapatria.com/actualidad');
+                    window.open('http://www.ucaldas.edu.co/portal/');
                     break;
                 default:
                     alert('La opción <' + opcion + '> no está disponible');
@@ -62,107 +121,83 @@ $(document).on('ready', function () {
         });
     });
 
-
-    // ejemplo de llamado de una instrucción $.post
- /*   $.post("controlador/fachada.php", {
-        clase: 'UtilConexion',
-        oper: 'getEstados'
-    }, function (estados) {
-       // console.log(estados);
-    }, 'json');*/
-	
-	$.post("controlador/fachada.php", {
-        clase: 'UtilConexion',
-        oper: 'getTipoReserva'
-    }, function (tipos) {
-        console.log(tipos);
-        tipoReserva = tipos;
-    }, 'json');
-
-        // ejemplo de llamado de una instrucción $.post
     $.post("controlador/fachada.php", {
         clase: 'UtilConexion',
-        oper: 'getTipoDocumento'
+        oper: ['getTipoReserva', 'getTipoDocumento', 'getDiasSemana', 'getEstadosEquipos']
     }, function (data) {
-        console.log(data);
-        tipoDoc = data;
-    }, 'json');
-
-        $.post("controlador/fachada.php", {
-        clase: 'UtilConexion',
-        oper: 'getDiasSemana'
-    }, function (data) {
-        console.log(data);
-        diasSemana = data;
-    }, 'json');
-
-        $.post("controlador/fachada.php", {
-        clase: 'UtilConexion',
-        oper: 'getEstadosEquipos'
-    }, function (data) {
-        console.log(data);
-        estadosEquipos = data;
+        tipoReserva = data[0];
+        tipoDoc = data[1];
+        diasSemana = data[2];
+        estadosEquipos = data[3];
     }, 'json');
 
     // cada que se redimensione el navegador se actualiza anchoContenedor
     $(window).on('resize', function () {
         anchoContenedor = $(window).width() - 220;
-        console.log('ancho usable: ' + anchoContenedor);
         $('.ui-jqgrid-btable').each(function () {
             $(this).jqGrid('setGridWidth', anchoContenedor);
         });
     });
 
 
-//$('a.login-window').click(function() {
-        
-        // Getting the variable's value from a link 
-        //var loginBox = $(this).attr('href');
-        //alert(loginBox);
-        //Fade in the Popup and add close button
-        $("#login-box").fadeIn(300);
-        
-        //Set the center alignment padding + border
-        var popMargTop = ($("#login-box").height() + 24) / 2; 
-        var popMargLeft = ($("#login-box").width() + 24) / 2; 
-        
-        $("#login-box").css({ 
-            'margin-top' : -popMargTop,
-            'margin-left' : -popMargLeft
-        });
-        
-        // Add the mask to body
-        $('body').append('<div id="mask"></div>');
-        $('#mask').fadeIn(300);
-        
-        //return false;
-    //});
-    
-    // When clicking on the button close or the mask layer the popup closed
-    /*$('a.close, #mask, #entrar').on('click', function() { 
-          $('#mask , .login-popup').fadeOut(300 , function() {
-            $('#mask').remove();  
-        }); 
-        return false;
-    });*/
-
-    
-
 });
 
 /**
  * Carga el contenido de una página sobre un elemento del DOM
- * @param {type} contenedor el elemento sobre el que se mostrará la página html
- * @param {type} url la dirección de la página html que será mostrada
+ * @param {type} contenedor El elemento sobre el que se mostrará la página html
+ * @param {type} url La dirección de la página html que será mostrada
+ * @param {type} accion Opcional El nombre de una función que deba ejecutarse luego de cargar la página
+ * @returns {undefined}
  */
-function cargarPagina(contenedor, url) {
+function cargarPagina(contenedor, url, accion) {
     $(contenedor).load(url, function (response, status, xhr) {
         if (status === "error") {
             alert("Lo siento. Error " + xhr.status + ": " + xhr.statusText);
+        } else {
+            if (typeof accion === 'function') {
+                accion();
+            }
         }
     });
 }
 
+function inicializarMenu() {
+    $('#menu-principal').smartmenus({
+        mainMenuSubOffsetX: 1,
+        mainMenuSubOffsetY: -8,
+        subMenusSubOffsetX: 1,
+        subMenusSubOffsetY: -8
+    });
+
+    $('#menu-principal li a').each(function () {
+        var opcion = $(this).text();        // el nombre de una opción del menú
+        var pagina = $(this).attr('href');  // recupera el nombre de la página y...
+        $(this).attr('href', '');           // convierte la url en una 'url limpia'
+
+        $(this).on('click', function (event) {
+            referenciaActual = $(this).attr('id');
+//            console.log("pagina : "+pagina);
+            if ($(this).attr('title') === 'Guardar cambios') {
+                guardarCambios();
+            } else if (opcion === "Cerrar sesión") {
+                $.post("controlador/fachada.php", {
+                    clase: 'Usuario',
+                    oper: 'cerrarSesion'
+                }, function () {
+//                    También podría ser: location.reload(true);
+//                     if (opciones[opcion]) {  // si la opción no está bloqueada...
+                    window.location.href = "index.html";
+//                    }
+                });
+            } else if (opcion === "Autenticarse") {
+                $("#index-frmautentica").dialog("open");
+            } else {
+                cargarPagina("#index-contenido", pagina);
+            }
+            event.preventDefault();
+        });
+    });
+}
 /**
  * Esta función se requiere a nivel global para procesar la respuesta que recibe un objeto jqGrid desde el servidor
  * @param {type} response Una cadena JSON con el estado y el mensaje que envía el servidor luego de procesar una acción
@@ -220,7 +255,7 @@ function getElementos(parametros) {
     }).done(function (data) {
         elementos = data;
     }).fail(function () {
-       // console.log("Error de carga de datos: " + JSON.stringify(parametros));
+        // console.log("Error de carga de datos: " + JSON.stringify(parametros));
         alert("Error de carga de datos");
     }).always(function () {
         if (aviso) {

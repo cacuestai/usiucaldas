@@ -2,33 +2,28 @@
  * Created by Jhonatan Ballesteros on 13/11/2016.
  */
 
-$(document).ready(function () {
+$(function () {
     var calendario;
     var filtro = "Sala";
     var anchoEtiquetas = 100;
     var anchoContenedor = 500;
-    var lista_Actividades = ["Selecciones una actividad", "Monitoria", "Clase", "Evento"];
-    var filtros = ["Seleccione un Filtro", "Docente", "Sala", "Monitor"];
-    
-    jQuery('#calendario-start').datetimepicker({
-        step: 30, // listado de horas con cambio cada media hora
-        format: 'Y-m-d H:i'
-    });
-    
-    jQuery('#calendario-end').datetimepicker(
-            {
-                step: 30, // listado de horas con cambio cada media hora
-                format: 'Y-m-d H:i'
-            }
-    );
 
-    for (var i = 0; i < lista_Actividades.length; i++) {
-        var x = document.getElementById("calendario-actividad");
-        var option = document.createElement("option");
-        option.text = lista_Actividades[i];
-        option.value = i;
-        x.appendChild(option);
-    }
+    var lista_Actividades = ["Selecciones una actividad", "Monitoria", "Clase", "Evento"];
+    var filtros = ["Seleccione un filtro", "Docente", "Sala", "Monitor"];
+
+    jQuery('#calendario-start').datetimepicker(initDateTimePicker);
+
+    jQuery('#calendario-end').datetimepicker(initDateTimePicker);
+
+    console.log("******* corregir uso de getElementById *************");
+//    for (var i = 0; i < lista_Actividades.length; i++) {
+//        var x = document.getElementById("calendario-actividad");
+//        var option = document.createElement("option");
+//        option.text = lista_Actividades[i];
+//        option.value = i;
+//        x.appendChild(option);
+//    }
+
     $('#calendario-filtros').html('');
     for (var j = 0; j < filtros.length; j++) {
         $('#calendario-filtros').append($('<option>', {
@@ -37,30 +32,27 @@ $(document).ready(function () {
         }));
     }
 
-    var lista_salas = getElementos({'clase': 'sala', 'oper': 'getSelectSala', 'json': true});
+    var lista_salas = getElementos({'clase': 'Sala', 'oper': 'getSelect', 'json': true});
     $('#calendario-sala').html(lista_salas);
 
     $("#calendario-actividad").on('change', function () {
-
         if (this.value == 1) {
-
-            var lista_monitores = getElementos({'clase': 'monitor', 'oper': 'getSelectMonitor', 'json': true});
+            var lista_monitores = getElementos({'clase': 'Monitor', 'oper': 'getSelect', 'json': true});
             $('#calendario-usuario').html(lista_monitores);
-
         }
         else if (this.value == 2 || this.value == 3) {
-
-            var lista_docentes = getElementos({'clase': 'docente', 'oper': 'getSelectDocente', 'json': true});
+            var lista_docentes = getElementos({'clase': 'Docente', 'oper': 'getSelect', 'json': true});
             $('#calendario-usuario').html(lista_docentes);
         }
     });
+
     $('#calendario-filtros').on('change', function () {
         if (this.value == 'Docente' || this.value == 'Monitor' || this.value == 'Sala') {
-
             filtro = this.value;
             calendario.fullCalendar("refetchEvents");
         }
     });
+
     $("#calendario-dialog").estiloFormulario({
         //'claseFormulario': 'box',
         'anchoFormulario': anchoContenedor + 'px',
@@ -76,8 +68,7 @@ $(document).ready(function () {
         height: 280,
         modal: true
     });
-    
-    // página cargada, inicializamos el calendario...
+
     calendario = $('#calendario-calendario').fullCalendar({
         theme: true,
         header: {
@@ -86,18 +77,16 @@ $(document).ready(function () {
             right: 'month,agendaWeek,agendaDay,listMonth'
         },
         defaultView: 'agendaWeek',
-        height: 600,
-        width: 650,
+        //height: 600,
+        //width: 500,
         selectable: true,
         selectHelper: true,
         editable: true,
         select: function (start, end) {
-
             nuevaActividad(start, end);
         },
         eventLimit: true,
         eventClick: function (calEvent, jsEvent, view) {
-
             actualizarActividad(calEvent);
         },
         events: {
@@ -115,7 +104,6 @@ $(document).ready(function () {
 
         },
         eventResize: function (event, delta, revertFunc) {
-
             redimensionarActividad(event);
         },
         eventDrop: function (event, delta, revertFunc) {
@@ -134,6 +122,7 @@ $(document).ready(function () {
     function mostrarInformacion(evento) {
 
     }
+
     function nuevaActividad(start, end) {
         console.log('agregando turnos');
 
@@ -141,13 +130,11 @@ $(document).ready(function () {
         $("#calendario-start").val(start.format("YYYY-MM-DD HH:mm"));
         $("#calendario-end").val(end.format("YYYY-MM-DD HH:mm"));
 
-
         var formulario = $("#calendario-dialog").dialog("option", "buttons", [
             {
                 id: "btnGuardar", text: "Guardar", click: function () {
                     //aca va el metodo para agregar una actividad
                     agregarActividad(formulario);
-
                 }
             },
             {
@@ -205,12 +192,12 @@ $(document).ready(function () {
         var tipo = $("#calendario-actividad").val();
         var descripcion = $("#calendario-descripcion").val();
         var estado_reserva = 0;
+
         //alert(idUsuario+"\n"+start+"\n"+end+"\n"+sala+"\n"+fecha_reserva+"\n"+estado_reserva+"\n"+tipo+"\n"+descripcion+"\n");
         // si start y end de los campos tiene dato, reemplazar lo que llega como argumentos
         // si end es vacío, entonces start + 1 hora
 
         if (idUsuario !== '0' && start && end) {
-
             var datosCronograma = {
                 id_usuario: idUsuario,
                 fecha_ini_prestamo: start,
@@ -250,9 +237,7 @@ $(document).ready(function () {
         } else {
             console.log('falló la inserción. Datos incompletos o erróneos');
         }
-
     }
-
 
     function editarActividad(formulario, evento) {
         var idUsuario = $("#calendario-usuario").val();
@@ -304,8 +289,6 @@ $(document).ready(function () {
         }
         console.log(evento);
     }
-
-
 
     function eliminarActividad(formulario, evento) {
         if (confirm('Confirme por favor si esta seguro de lo que trata de hacer')) {

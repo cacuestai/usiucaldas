@@ -13,12 +13,10 @@ $(function () {
         altoGrid = 200;
     }
 
-    var clase = 'monitor';  // la clase que implementa el CRUD para este grid
+    var clase = 'Monitor';  // la clase que implementa el CRUD para este grid
     var idPager = 'monitor-pager';  // la barra de navegación del grid ubicada en la parte inferior
 
-    var field1, check_function1 = function (value, colname)
-    {
-
+    var field1, check_function1 = function (value, colname) {
         if (colname === "nombre") {
             field1 = value;
         }
@@ -34,9 +32,7 @@ $(function () {
         return [true];
     };
 
-    var field1, check_function2 = function (value, colname)
-    {
-
+    var field1, check_function2 = function (value, colname) {
         if (colname === "apellido") {
             field1 = value;
         }
@@ -51,9 +47,8 @@ $(function () {
 
         return [true];
     };
-    var field1, check_function3 = function (value, colname)
-    {
 
+    var field1, check_function3 = function (value, colname) {
         if (colname === "correo") {
             field1 = value;
         }
@@ -64,9 +59,8 @@ $(function () {
         }
         return [true];
     };
-    var field1, check_function4 = function (value, colname)
-    {
 
+    var field1, check_function4 = function (value, colname) {
         if (colname === "contrasena") {
             field1 = value;
         }
@@ -79,37 +73,37 @@ $(function () {
 
     // las columnas de un grid se definen como un array de objetos con múltiples atributos
     var columnas = [
-        {'label': 'Id Monitor', name: 'id_usuario', index: 'id_usuario', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},
-            editoptions: {dataInit: asignarAncho}
-        },
-        {'label': 'Tipo Documento', name: 'tipo_doc', index: 'tipo_doc', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},edittype:'select',
+        {'label': 'Tipo Documento', name: 'tipo_doc', index: 'tipo_doc', width: 120, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1}, edittype: 'select',
             editoptions: {
                 dataInit: asignarAncho,
-                value:tipoDoc
+                value: tipoDoc
             }
         },
-        {'label': 'Nombre', name: 'nombre', index: 'nombre', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1,custom:true,custom_func:check_function1},
+        {'label': 'Id Monitor', name: 'id_usuario', index: 'id_usuario', width: 100, align: 'right', sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'Apellido', name: 'apellido', index: 'apellido', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1,custom:true,custom_func:check_function2},
+        {'label': 'Nombre', name: 'nombre', index: 'nombre', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function1},
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'Correo', name: 'correo', index: 'correo', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1,custom:true,custom_func:check_function3},
+        {'label': 'Apellido', name: 'apellido', index: 'apellido', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function2},
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'Contrase&ntilde;a', name: 'contrasena', index: 'contrasena', width: 100, sortable: true, editable: true,hidden:true, editrules: {required: true,edithidden:true, number: false, minValue: 1,custom:true,custom_func:check_function4},edittype:'password',
+        {'label': 'Correo', name: 'correo', index: 'correo', width: 200, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function3},
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'Color', name: 'color', index: 'color', width: 100, sortable: true, editable: true,hidden:true, editrules: {required: true, number: false, minValue: 1,edithidden:true},            
+        {'label': 'Contrase&ntilde;a', name: 'contrasena', index: 'contrasena', width: 100, sortable: true, editable: true, hidden: true, editrules: {required: true, edithidden: true, number: false, minValue: 1, custom: true, custom_func: check_function4}, edittype: 'password',
+            editoptions: {dataInit: asignarAncho}
+        },
+        {'label': 'Color', name: 'color', index: 'color', width: 100, sortable: true, editable: true, hidden: true, editrules: {required: true, number: false, minValue: 1, edithidden: true},
             editoptions: {
                 dataInit: function (e) {
                     $(e).attr("type", "color");
-                 }
+                }
             }
         }
     ];
-	
-	function valoresSelect(){
+
+    function valoresSelect() {
         valores = "codigo:codigo";
         return valores;
     }
@@ -164,17 +158,17 @@ $(function () {
     }, {// edit
         width: 420,
         modal: true,
-		beforeSubmit: function (postdata) {   //  OJO  <<<<<<<<<
+        beforeSubmit: function (postdata) {   //  OJO  <<<<<<<<<
             postdata.color = $('#color').val();
         },
         afterSubmit: respuestaServidor
     }, {// add
         width: 420,
         modal: true,
-		beforeSubmit: function (postdata) {   //  OJO  <<<<<<<<<
+        beforeSubmit: function (postdata) {   //  OJO  <<<<<<<<<
             postdata.color = $('#color').val();
-			postdata['contrasena'] = $.md5(postdata['contrasena'])
-            return [true];	
+            postdata['contrasena'] = $.md5(postdata['contrasena'])
+            return [true];
         },
         afterSubmit: respuestaServidor
     }, {// del

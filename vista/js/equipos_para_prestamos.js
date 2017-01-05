@@ -1,4 +1,4 @@
- /* 
+/* 
  * Permite la actualización de la información de órdenes de producción
  * Demostración de las posibilidades más usuales de un elemento jqGrid
  */
@@ -13,7 +13,7 @@ $(function () {
         altoGrid = 200;
     }
 
-    var clase = 'equipos_para_prestamos';  // la clase que implementa el CRUD para este grid
+    var clase = 'EquiposParaPrestamo';  // la clase que implementa el CRUD para este grid
     var idPager = 'equipos_para_prestamos-pager';  // la barra de navegación del grid ubicada en la parte inferior
 
     var field1, check_function1 = function (value, colname)
@@ -37,8 +37,8 @@ $(function () {
             field1 = value;
         }
 
-        if (value.length >51 ) {
-            
+        if (value.length > 51) {
+
             return [false, "la descripcion debe tener maximo de 50 caracateres"];
         } else
         {
@@ -50,25 +50,25 @@ $(function () {
     // las columnas de un grid se definen como un array de objetos con múltiples atributos
     var columnas = [
         /*{'label': 'Id Equipo para Préstamo', name: 'id_equipo_para_prestamo', index: 'id_equipo_para_prestamo', width: 100, sortable: true,editable: true, editrules: {required: true, number: false, minValue: 1},
-            editoptions: {
-                defaultValue:function()
-                {
-                    return jQuery("#equipos_para_prestamos-grid").jqGrid('getGridParam', 'records') +1;
-                }
-                
-            }
-        },*/
-    	{'label': 'Nombre', name: 'nombre', index: 'nombre', width: 100, sortable: true, editable:true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function1},
-			editoptions: {dataInit: asignarAncho}
+         editoptions: {
+         defaultValue:function()
+         {
+         return jQuery("#equipos_para_prestamos-grid").jqGrid('getGridParam', 'records') +1;
+         }
+         
+         }
+         },*/
+        {'label': 'Nombre', name: 'nombre', index: 'nombre', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function1},
+            editoptions: {dataInit: asignarAncho}
         },
-		{'label': 'Descripci&oacute;n', name: 'descripcion', index: 'descripcion', width: 100, sortable: true, editable: true,editrules: {required: false, number: false, minValue: 1, custom: true, custom_func: check_function2},
-			editoptions: {dataInit: asignarAncho}
+        {'label': 'Descripci&oacute;n', name: 'descripcion', index: 'descripcion', width: 100, sortable: true, editable: true, editrules: {required: false, number: false, minValue: 1, custom: true, custom_func: check_function2},
+            editoptions: {dataInit: asignarAncho}
         },
-		{'label': 'Estado', name: 'estado', index: 'estado', width: 100, sortable: true, editable: true,editrules: {required: true, number: false, minValue: 1},edittype:'select',
+        {'label': 'Estado', name: 'estado', index: 'estado', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1}, edittype: 'select',
             editoptions: {
                 dataInit: asignarAncho,
-                value:estadosEquipos
-            }			
+                value: estadosEquipos
+            }
         },
     ];
 
@@ -163,17 +163,17 @@ $(function () {
                 return [false, "Falta seleccionar nombre de equipo para prestamo"];
             }
         }
-        if (columna=='descripcion') 
+        if (columna == 'descripcion')
         {
             if (valor === '0') {
                 return [false, "Falta seleccionar descripcion de equipo para prestamo"];
-            }   
+            }
         }
-        if (columna=='estado') 
+        if (columna == 'estado')
         {
             if (valor === '0') {
                 return [false, "Falta seleccionar estado de equipo para prestamo"];
-            }   
+            }
         }
         return [true, ""];
     }

@@ -8,7 +8,7 @@ $(function () {
         altoGrid = 200;
     }
 
-    var clase = 'sede';  // la clase que implementa el CRUD para este grid
+    var clase = 'Sede';  // la clase que implementa el CRUD para este grid
     var idPager = 'sede-pager';  // la barra de navegación del grid ubicada en la parte inferior
 
     // las columnas de un grid se definen como un array de objetos con múltiples atributos

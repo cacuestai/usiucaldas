@@ -8,116 +8,87 @@ $(function () {
         altoGrid = 200;
     }
 
-    var clase = 'sala';  // la clase que implementa el CRUD para este grid
+    var clase = 'Sala';  // la clase que implementa el CRUD para este grid
     var idPager = 'sala-pager';  // la barra de navegación del grid ubicada en la parte inferior
 
-    var field1,check_function1 = function(value,colname) 
-    {
-        
+    var field1, check_function1 = function (value, colname) {
+
         if (colname === "nombre_sala") {
             field1 = value;
-        } 
-        
-        if(value.length<1){
-            console.log("t",value,colname);
+        }
+
+        if (value.length < 1) {
             return [false, "El nombre debe tener logitud mayor a 1  "];
         }
         else
         {
             return [true];
         }
-        
+
         return [true];
     };
 
-var field1,check_function2 = function(value,colname) 
-    {
-        
+    var field1, check_function2 = function (value, colname) {
+
         if (colname === "capacidad") {
             field1 = value;
-        } 
-        
-        if(value.length<0){
-            console.log("t",value,colname);
+        }
+
+        if (value.length < 0) {
             return [false, "Capacidad de la sala incorrecta "];
         }
         else
         {
             return [true];
         }
-        
+
         return [true];
     };
 
-var field1,check_function3 = function(value,colname) 
-    {
-        
+    var field1, check_function3 = function (value, colname) {
+
         if (colname === "descripcion") {
             field1 = value;
-        } 
-        
-        if(value.length>50){
-            console.log("t",value,colname);
+        }
+
+        if (value.length > 50) {
             return [false, "La descripcion debe ser mas corta"];
         }
-        else
-        {
+        else {
             return [true];
         }
-        
+
         return [true];
     };
+
     // las columnas de un grid se definen como un array de objetos con múltiples atributos
     var columnas = [
         /*{'label': 'Id Sala', name: 'id_sala', index: 'id_sala', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1,custom:true,custom_func:check_function1},
-            editoptions: {dataInit: asignarAncho}
-        },*/
-        {'label': 'Nombre Sala', name: 'nombre_sala', index: 'nombre_sala', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1,custom:true,custom_func:check_function1},
-            editoptions: {dataInit: asignarAncho}
-        },
-        {'label': 'Capacidad', name: 'capacidad', index: 'capacidad', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1,custom:true,custom_func:check_function2},
+         editoptions: {dataInit: asignarAncho}
+         },*/
+        {'label': 'Nombre Sala', name: 'nombre_sala', index: 'nombre_sala', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function1},
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'Descripci&oacute;n', name: 'descripcion', index: 'descripcion', width: 100, sortable: true, editable: true, editrules: {required: false, number: false, minValue: 1,custom:true,custom_func:check_function3},
+        {'label': 'Capacidad', name: 'capacidad', index: 'capacidad', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function2},
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'Nombre Bloque', name: 'nombre_bloque', index: 'nombre_bloque', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},edittype:'select',
+        {'label': 'Descripci&oacute;n', name: 'descripcion', index: 'descripcion', width: 100, sortable: true, editable: true, editrules: {required: false, number: false, minValue: 1, custom: true, custom_func: check_function3},
+            editoptions: {dataInit: asignarAncho}
+        },
+        {'label': 'Nombre Bloque', name: 'nombre_bloque', index: 'nombre_bloque', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1}, edittype: 'select',
             editoptions: {
                 dataInit: asignarAncho,
-                value:valoresSelect()}
+                dataUrl: 'controlador/fachada.php?clase=Bloque&oper=getSelect'
+            }
         },
-        {'label': 'Color', name: 'color', index: 'color', width: 100, sortable: true, editable: true,hidden:true, editrules: {required: true, number: false, minValue: 1,edithidden:true},
-            
+        {'label': 'Color', name: 'color', index: 'color', width: 100, sortable: true, editable: true, hidden: true, editrules: {required: true, number: false, minValue: 1, edithidden: true},
             editoptions: {
                 dataInit: function (e) {
                     $(e).attr("type", "color");
-                 }
+                }
             }
         }
     ];
-	
-	function valoresSelect(){
-        valoresNombreBloque="";      
-        $.ajax({
-            type: 'POST',
-            url: "controlador/fachada.php?clase=bloque&oper=selectNombresBloque",
-            data: {},
-            success: function(data)
-            {
-                var datos=jQuery.parseJSON(data);
-                console.log(datos);
-                var rows = datos['rows'];                
-                for(i in rows)
-                {
-                    var id=rows[i]['id'];
-                    var s=id+":"+id+";";
-                    valoresNombreBloque+=s;                
-                }                                
-            },              
-            async:false
-        });
-        return valoresNombreBloque.substr(0,(valoresNombreBloque.length-1)); 
-    }
 
     // inicializa el grid
     var grid = jQuery('#sala-grid').jqGrid({
@@ -129,7 +100,7 @@ var field1,check_function3 = function(value,colname)
             oper: 'select'
         },
         rowNum: 10,
-        rowList: [10,20, 30],
+        rowList: [10, 20, 30],
         colModel: columnas,
         autowidth: false,
         shrinkToFit: false,
@@ -169,14 +140,14 @@ var field1,check_function3 = function(value,colname)
     }, {// edit
         width: 420,
         modal: true,
-		beforeSubmit: function (postdata) {   //  OJO  <<<< 
+        beforeSubmit: function (postdata) {   //  OJO  <<<< 
             postdata.color = $('#color').val();
         },
         afterSubmit: respuestaServidor
     }, {// add
         width: 420,
         modal: true,
-		beforeSubmit: function (postdata) {   //  OJO  <<<< 
+        beforeSubmit: function (postdata) {   //  OJO  <<<< 
             postdata.color = $('#color').val();
         },
         afterSubmit: respuestaServidor
@@ -204,7 +175,7 @@ var field1,check_function3 = function(value,colname)
      * @param {type} columna nombre con que está etiquetada la columna
      * @returns {Array} un array indicando si la validación fue exitosa o no
      */
-    function validarOrdenProduccion(valor, columna) {
+    function validarEJEMPLO(valor, columna) {
 
         if (columna == 'nombre_sala') {
             if (valor === '0') {

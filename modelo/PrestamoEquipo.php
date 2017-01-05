@@ -1,11 +1,11 @@
 <?php
 
-class horas_disponibles_monitor {
+class PrestamoEquipo {
     
     function add($param) {
         extract($param);
         
-        $sql = "INSERT INTO horas_disp_monitor (dia,hora_inicio,hora_fin,id_monitor) values('$dia','$hora_inicio','$hora_fin','$id_monitor')";
+        $sql = "INSERT INTO prestamo_equipo (fecha_inicio,fecha_fin,id_usuario,fk_equipo) values('$fecha_inicio','$fecha_fin','$id_usuario','$fk_equipo')";
 
         $conexion->getPDO()->exec($sql);
         echo $conexion->getEstado();
@@ -14,10 +14,10 @@ class horas_disponibles_monitor {
     function edit($param) {
         extract($param);
  
-        $sql = "UPDATE horas_disp_monitor
-                       SET  dia = '$dia',hora_inicio='$hora_inicio',
-					   hora_fin='$hora_fin', id_monitor='$id_monitor'
-                       WHERE id_horario = '$id';";
+        $sql = "UPDATE prestamo_equipo
+                       SET fecha_inicio = '$fecha_inicio',fecha_fin='$fecha_fin',
+					   id_usuario='$id_usuario', fk_equipo='$fk_equipo'
+                       WHERE codigo_prestamo = '$id';";
        
         $conexion->getPDO()->exec($sql);
         echo $conexion->getEstado();
@@ -27,7 +27,7 @@ class horas_disponibles_monitor {
     function del($param) {
         extract($param);
         error_log(print_r($param, TRUE));
-        $conexion->getPDO()->exec("DELETE FROM horas_disp_monitor WHERE id_horario = '$id';");
+        $conexion->getPDO()->exec("DELETE FROM prestamo_equipo WHERE codigo_prestamo = '$id';");
         echo $conexion->getEstado();
 
     }
@@ -40,8 +40,7 @@ class horas_disponibles_monitor {
         extract($param);
         $where = $conexion->getWhere($param);
         // conserve siempre esta sintaxis para enviar filas al grid:
-        $sql = "SELECT h.id_horario,h.dia,h.hora_inicio,h.hora_fin,h.id_monitor,a.nombre
-                from horas_disp_monitor h, usuario a where(h.id_monitor=a.id_usuario)";
+        $sql = "SELECT p.codigo_prestamo,p.fecha_inicio,p.fecha_fin,p.id_usuario,a.nombre,p.fk_equipo from prestamo_equipo p, usuario a where(p.id_usuario=a.id_usuario)";
         // crear un objeto con los datos que se envían a jqGrid para mostrar la información de la tabla
         $respuesta = $conexion->getPaginacion($sql, $rows, $page, $sidx, $sord); // $rows = filas * página
 
@@ -52,18 +51,16 @@ class horas_disponibles_monitor {
                     
             while ($fila = $rs->fetch(PDO::FETCH_ASSOC)) {
                 //$tipoEstado = UtilConexion::$tipoEstadoProduccion[$fila['estado']];  // <-- OJO, un valor calculado
-                $diasS = UtilConexion::$diasSemana[$fila['dia']];
-
+                
                 $respuesta['rows'][] = [
-                    'id' => $fila['id_horario'], // <-- debe identificar de manera única una fila del grid, por eso se usa la PK
+                    'id' => $fila['codigo_prestamo'], // <-- debe identificar de manera única una fila del grid, por eso se usa la PK
                     'cell' => [ // los campos que se muestra en las columnas del grid
-                     //   $fila['id_horario'],
-					    $diasS,
-                        $fila['hora_inicio'],
-                        $fila['hora_fin'],
-                        $fila['id_monitor'],
-						$fila['nombre']
-                     
+                       // $fila['codigo_prestamo'],
+					    $fila['fecha_inicio'],
+                        $fila['fecha_fin'],
+                        $fila['id_usuario'],
+                        $fila['fk_equipo'],
+                        $fila['nombre']
                     ]
                 ];
             }

@@ -6,19 +6,19 @@
  */
 class UtilConexion {
 
-    private $pdo;    
+    private $pdo;
     public static $tipo_doc;
     public static $diasSemana;
     public static $estadoEquipos;
-	public static $tipoReserva;
+    public static $tipoReserva;
 
     public function __construct() {
         // estas constantes se utilizan tanto en vista como en modelo, por lo tanto se definen una vez y se utilizan N veces (nada de duplicar código)
         //self::$tipoEstadoProduccion = ['1' => 'Seleccione un estado', '2' => 'Pendiente', '3' => 'En producción', '3' => 'Terminado'];
-        self::$tipo_doc = ['1'=>'Indeterminado','2'=>'Cédula de ciudadanía','3'=>'Código Estudiantil','4'=>'Tarjeta de Identidad','5'=>'Pasaporte','6'=>'Cédula Extranjera'];
-        self::$diasSemana = ['0' => 'Seleccione un dia','1'=>'Lunes','2'=>'Martes','3'=>'Miércoles','4'=>'Jueves','5'=>'Viernes','6'=>'Sábado', '7'=>'Domingo'];
-        self::$estadoEquipos=['1'=>'Correcto','2'=>'Dañado','3'=>'Reparacion'];
-        self::$tipoReserva = ['0' => 'Seleccione un tipo de actividad', '1' => 'Monitoría', '2' => 'Clase', '3' => 'Evento'];
+        self::$tipo_doc = ['0' => 'Indeterminado', '1' => 'Cédula de ciudadanía', '2' => 'Código Estudiantil', '3' => 'Tarjeta de Identidad', '4' => 'Pasaporte', '5' => 'Cédula Extranjera'];
+        self::$diasSemana = ['0' => 'Domingo', '1' => 'Lunes', '2' => 'Martes', '3' => 'Miércoles', '4' => 'Jueves', '5' => 'Viernes', '6' => 'Sábado'];
+        self::$estadoEquipos = ['0' => 'Correcto', '1' => 'Dañado', '2' => 'En reparación'];
+        self::$tipoReserva = ['0' => 'Seleccione una actividad', '1' => 'Monitoría', '2' => 'Clase', '3' => 'Evento'];
 
         try {
             $this->pdo = new PDO("pgsql:host=" . SERVIDOR . " port=" . PUERTO . " dbname=" . BASE_DATOS, USUARIO, CONTRASENA);
@@ -154,6 +154,21 @@ class UtilConexion {
     }
 
     /**
+     * Busca algo en alguna parte...
+     * Ejemplo: $fila = $conexion->getFila("SELECT * FROM mitabla WHERE columna=$id");
+     * @param String $param La consulta de selección SQL
+     * @return False si no encontró o un array asociativo con los datos de la fila
+     */
+    public function getFila($sql) {
+        if (($resultado = $this->pdo->query($sql))) {
+            $fila = $resultado->fetch(PDO::FETCH_ASSOC);
+            return $fila ? $fila : FALSE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    /**
      * Devuelve el estado que reporta el motor de base de datos luego de una transacción
      * @param boolean $json TRUE por defecto, para indicar que se devuelve una cadena JSON con el estado,
      * FALSE, devuelve un array asociativo con el estado.
@@ -172,18 +187,21 @@ class UtilConexion {
     }
 
     public function getTipoDocumento() {
-        echo json_encode(self::$tipo_doc);
+        return self::$tipo_doc;
     }
+
     public function getTipoReserva() {
-        echo json_encode(self::$tipoReserva);
-    }    
+        return self::$tipoReserva;
+    }
 
     public function getDiasSemana() {
-        echo json_encode(self::$diasSemana);
+        return self::$diasSemana;
     }
 
     public function getEstadosEquipos() {
-        echo json_encode(self::$estadoEquipos);
+        return self::$estadoEquipos;
     }
+
 }
+
 ?>

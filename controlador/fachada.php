@@ -45,7 +45,17 @@ class Fachada {
 
         if (class_exists($clase)) {
             if (substr($clase, 0, 4) === 'Util') {
-                if (method_exists($clase, $metodo)) {
+                // inicialmente en index.js se recuperan varios arrays que se requieren a nivel de aplicación,
+                // por eso esta condición que permite ejecutar un array de métodos o un solo método
+                if (is_array($metodo)) {
+                    $datos = [];
+                    foreach ($metodo as $funcion) {
+                        if (method_exists($clase, $funcion)) {
+                            $datos[] = $clase::$funcion($args);
+                        }
+                    }
+                    echo json_encode($datos);
+                } else if (method_exists($clase, $metodo)) {
                     $clase::$metodo($args);
                 } else {
                     throw new Exception("Imposible responder al mensaje enviado. Argumentos recibidos:\n" . print_r($_REQUEST, 1));

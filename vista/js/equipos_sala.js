@@ -8,7 +8,7 @@ $(function () {
         altoGrid = 200;
     }
 
-    var clase = 'equipos_sala';  // la clase que implementa el CRUD para este grid
+    var clase = 'EquiposSala';  // la clase que implementa el CRUD para este grid
     var idPager = 'equipos_sala-pager';  // la barra de navegación del grid ubicada en la parte inferior
 
     var field1, check_function1 = function (value, colname)
@@ -24,7 +24,7 @@ $(function () {
 
         return [true];
     };
-	
+
     var field1, check_function2 = function (value, colname)
     {
 
@@ -37,8 +37,8 @@ $(function () {
         }
         return [true];
     };
-	
-	var field1, check_function3 = function (value, colname)
+
+    var field1, check_function3 = function (value, colname)
     {
 
         if (colname === "software_equipo") {
@@ -71,58 +71,29 @@ $(function () {
         {'label': 'Descripci&oacute;n', name: 'descripcion', index: 'descripcion', width: 100, sortable: true, editable: true, editrules: {required: false, number: false, minValue: 1, custom: true, custom_func: check_function2},
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'Estado', name: 'estado', index: 'estado', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},edittype:'select',
+        {'label': 'Estado', name: 'estado', index: 'estado', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1}, edittype: 'select',
             editoptions: {defaultValue: '0',
                 dataInit: asignarAncho,
-                value:estadosEquipos
+                value: estadosEquipos
             }
-        },        
+        },
         {'label': 'Software Equipo', name: 'software_equipo', index: 'id_parte', width: 100, sortable: true, editable: true,
             editoptions: {dataInit: asignarAncho}
         },
         {'label': 'Partes Equipo', name: 'partes_equipo', index: 'id_sofware', width: 100, sortable: true, editable: true,
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'Id Sala', name: 'id_sala', index: 'id_sala', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},edittype:'select',
+        {'label': 'Id Sala', name: 'id_sala', index: 'id_sala', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1}, edittype: 'select',
             editoptions: {defaultValue: '0',
-                dataUrl: 'controlador/fachada.php?clase=sala&oper=getSelectSala',
+                dataUrl: 'controlador/fachada.php?clase=Sala&oper=getSelect',
                 dataInit: asignarAncho
             }
         },
-        {'label': 'Nombre Sala', name: 'nombre_sala', index: 'nombre_sala', width: 100, sortable: true, 
+        {'label': 'Nombre Sala', name: 'nombre_sala', index: 'nombre_sala', width: 100, sortable: true,
             editoptions: {dataInit: asignarAncho}
-        }        
+        }
     ];
 
-    function valoresSelect1(){
-
-        valoresIdsS="";      
-        $.ajax({
-            type: 'POST',
-            url: "controlador/fachada.php?clase=sala&oper=selectIdsSala",
-            data: {},
-            success: function(data)
-            {
-                var datos=jQuery.parseJSON(data);
-                console.log(datos);
-                var rows = datos['rows'];                
-                for(i in rows)
-                {
-                    var id=rows[i]['id'];
-                    var s=id+":"+id+";";
-                    valoresIdsS+=s;                
-                }                                
-            },              
-            async:false
-        });
-        return valoresIdsS.substr(0,(valoresIdsS.length-1)); 
-    }
-
-    function valoresSelect2(){
-
-        valores = "correcto:correcto;dañado:dañado;reparacion:reparacion";
-        return valores;
-    }
     // inicializa el grid
     var grid = jQuery('#equipos_sala-grid').jqGrid({
         url: 'controlador/fachada.php',
@@ -204,8 +175,8 @@ $(function () {
      */
 
 
-     //------------------------------------------------------------------------
-     //validaciones campo 1
+    //------------------------------------------------------------------------
+    //validaciones campo 1
     function validarOrdenProduccion(valor, columna) {
 
         if (columna == 'id_equipo_sala') {
@@ -234,94 +205,94 @@ $(function () {
 
     //validacion campo 2
 
-var field1,check_function1 = function(value,colname) 
+    var field1, check_function1 = function (value, colname)
     {
 
         if (colname === "id_equipo_sala") {
             field1 = value;
-        } 
-        
-        if(value.length<3){
+        }
+
+        if (value.length < 3) {
             return [false, "El codigo del equipo debe tener una longitud mayor a 2"];
         }
         return [true];
     };
 
-    var field1,check_function2 = function(value,colname) 
+    var field1, check_function2 = function (value, colname)
     {
-        
+
         if (colname === "descripcion") {
             field1 = value;
-        }       
-          
-        if(value.length>=50){
+        }
+
+        if (value.length >= 50) {
             return [false, "Se han exedido la cantidad de caracteres de la descripcion"];
-        }       
+        }
         return [true];
     };
 
-    var field1,check_function3 = function(value,colname) 
+    var field1, check_function3 = function (value, colname)
     {
-        
+
         if (colname === "estado") {
             field1 = value;
-        }       
-          
-        if(value!='dañado'&& value!= 'correcto'&& value!='reparacion'){
-            console.log("t",value,colname);
+        }
+
+        if (value != 'dañado' && value != 'correcto' && value != 'reparacion') {
+            console.log("t", value, colname);
             return [false, "igrese uno de los valores correcto , dañado o reparacion"];
         }
-               
+
         return [true];
     };
 
-    var field1,check_function4 = function(value,colname) 
+    var field1, check_function4 = function (value, colname)
     {
-        
+
         if (colname === "nombre_sala") {
             field1 = value;
-        }       
-          
-        if(value.length<2){
-           
+        }
+
+        if (value.length < 2) {
+
             return [false, "El el nombre de la sala debe tener una longitud mayor a 1"];
         }
-        
+
         return [true];
     };
 
-    var field1,check_function5 = function(value,colname) 
+    var field1, check_function5 = function (value, colname)
     {
-        
+
         if (colname === "id_parte") {
             field1 = value;
-        }       
-          
-        if(value.length<1){
+        }
+
+        if (value.length < 1) {
             return [false, "El id de la parte debe ser utener una longitud mayor a 0"];
         }
-        if( isNaN(valor) ) {
-             return [false, "El id de la parte debe ser numerico"];
-        } 
-        
+        if (isNaN(valor)) {
+            return [false, "El id de la parte debe ser numerico"];
+        }
+
         return [true];
     };
 
 
-    var field1,check_function6 = function(value,colname) 
+    var field1, check_function6 = function (value, colname)
     {
-        
+
         if (colname === "id_sofware") {
             field1 = value;
-        }       
-          
-        if(value.length<1){
+        }
+
+        if (value.length < 1) {
             return [false, "El id del software debe tener una longitud mayor a 0"];
         }
-        if( isNaN(valor) ) {
-             return [false, "El id del software debe ser numerico"];
-        } 
-        
+        if (isNaN(valor)) {
+            return [false, "El id del software debe ser numerico"];
+        }
+
         return [true];
     };
 

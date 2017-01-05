@@ -1,6 +1,6 @@
 <?php
 
-class equipos_sala {
+class EquiposSala {
 
       function add($param) {
         extract($param);
@@ -74,11 +74,11 @@ class equipos_sala {
     }
 
         //funcion requerida para desplega los IDs de monitores disponibles a la hora de ingresar en una tabla que referencie este campo
-    public function selectIdEquipos($param) {
+    public function getSelect($param) {
         $json = FALSE;
         extract($param);
         $select = "";
-        $select .= "<option value='0'>Seleccione un equipo-sala</option>";
+        $select .= "<option value='0'>Seleccione el equipo</option>";
         foreach ($conexion->getPDO()->query("SELECT id_equipo_sala FROM equipos_sala") as $fila) {
             $name = $fila['id_equipo_sala'];
             $select .= "<option value='{$fila['id_equipo_sala']}'>{$name}</option>";

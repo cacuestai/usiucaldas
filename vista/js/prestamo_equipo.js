@@ -13,114 +13,63 @@ $(function () {
         altoGrid = 200;
     }
 
-    var clase = 'prestamo_equipo';  // la clase que implementa el CRUD para este grid
+    var clase = 'PrestamoEquipo';  // la clase que implementa el CRUD para este grid
     var idPager = 'prestamo_equipo-pager';  // la barra de navegación del grid ubicada en la parte inferior
 
     // las columnas de un grid se definen como un array de objetos con múltiples atributos
     var columnas = [
-        
-       
-     /*  {'label': 'Código Préstamo', name: 'codigo_prestamo', index: 'codigo_prestamo', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},
-            editoptions: {
-                dataInit: asignarAncho,
-                defaultValue:function()
-                {
-                    return jQuery("#prestamo_equipo-grid").jqGrid('getGridParam', 'records') +1;
-                }
-                
-            }
-       },*/
-       {'label': 'Fecha inicio', name: 'fecha_inicio', index: 'fecha_inicio', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},
+        /*  {'label': 'Código Préstamo', name: 'codigo_prestamo', index: 'codigo_prestamo', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},
+         editoptions: {
+         dataInit: asignarAncho,
+         defaultValue:function()
+         {
+         return jQuery("#prestamo_equipo-grid").jqGrid('getGridParam', 'records') +1;
+         }
+         
+         }
+         },*/
+        {'label': 'Fecha inicio', name: 'fecha_inicio', index: 'fecha_inicio', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},
             editoptions: {
                 //dataInit: asignarAncho
                 dataInit: function (e) {
-                    $(e).datetimepicker({});
-                }
-            }
-       },
-
-        {'label': 'Fecha fin', name: 'fecha_fin', index: 'fecha_fin', width: 100, sortable: true, editable: true,editrules: {required: false, number: false, minValue: 1},
-            editoptions: {
-                //dataInit: asignarAncho
-                dataInit: function (e) {
-                    $(e).datetimepicker({});
+                    $(e).datetimepicker(initDateTimePicker);
                 }
             }
         },
-        {'label': 'Usuario', name: 'id_usuario', index: 'id_usuario', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},edittype:'select',
+        {'label': 'Fecha fin', name: 'fecha_fin', index: 'fecha_fin', width: 100, sortable: true, editable: true, editrules: {required: false, number: false, minValue: 1},
+            editoptions: {
+                //dataInit: asignarAncho
+                dataInit: function (e) {
+                    $(e).datetimepicker(initDateTimePicker);
+                }
+            }
+        },
+        {'label': 'Usuario', name: 'id_usuario', index: 'id_usuario', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1}, edittype: 'select',
             editoptions: {
                 /*dataUrl: 'controlador/fachada.php?clase=prestamo_equipo&oper=getSelect',
-                dataInit: asignarAncho,
-                defaultValue: '0'*/
-                dataUrl: 'controlador/fachada.php?clase=usuario&oper=getSelectUsuario2',
+                 dataInit: asignarAncho,
+                 defaultValue: '0'*/
+                dataUrl: 'controlador/fachada.php?clase=Usuario&oper=getSelect',
                 dataInit: asignarAncho
             }
         },
-        {'label': 'Equipo para pr&eacute;stamo', name: 'fk_equipo', index: 'fk_equipo', width: 100, sortable: true, editable: true,editrules: {required: true, number: false, minValue: 1},edittype:'select',
+        {'label': 'Equipo para pr&eacute;stamo', name: 'fk_equipo', index: 'fk_equipo', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1}, edittype: 'select',
             editoptions: {
-                /*dataUrl: 'controlador/fachada.php?clase=prestamo_equipo&oper=getSelect2',
+                dataUrl: 'controlador/fachada.php?clase=EquiposParaPrestamo&oper=getSelect',
                 dataInit: asignarAncho,
-                defaultValue: '0'*/
-                value:valoresSelect2()
+                defaultValue: '0'
             }
         },
-        {'label': 'Nombre Usuario', name: 'nombre', index: 'nombre', width: 100, sortable: true,  editrules: { number: false       , minValue: 1},
+        {'label': 'Nombre Usuario', name: 'nombre', index: 'nombre', width: 100, sortable: true, editrules: {number: false, minValue: 1},
             editoptions: {
                 /*dataUrl: 'controlador/fachada.php?clase=nombre&oper=getSelect',
-                dataInit: asignarAncho,
-                defaultValue: '0'*/
+                 dataInit: asignarAncho,
+                 defaultValue: '0'*/
                 dataInit: asignarAncho,
             }
-        
+
         }
     ];
-
-
-    function valoresSelect1(){
-        valoresID="";      
-        $.ajax({
-            type: 'POST',
-            url: "controlador/fachada.php?clase=docente&oper=selectIdsDocente",
-            data: {},
-            success: function(data)
-            {
-                var datos=jQuery.parseJSON(data);
-                console.log(datos);
-                var rows = datos['rows'];                
-                for(i in rows)
-                {
-                    var id=rows[i]['id'];
-                    var s=id+":"+id+";";
-                    valoresID+=s;                
-                }                                
-            },              
-            async:false
-        });
-        return valoresID.substr(0,(valoresID.length-1)); 
-    }
-
-    function valoresSelect2(){
-        valoresIDEquipo="";      
-        $.ajax({
-            type: 'POST',
-            url: "controlador/fachada.php?clase=equipos_para_prestamos&oper=select",
-            data: {},
-            success: function(data)
-            {
-                var datos=jQuery.parseJSON(data);
-                console.log(datos);
-                var rows = datos['rows'];                
-                for(i in rows)
-                {
-                    var id=rows[i]['id'];
-                    var s=id+":"+id+";";
-                    valoresIDEquipo+=s;                
-                }                                
-            },              
-            async:false
-        });
-        return valoresIDEquipo.substr(0,(valoresIDEquipo.length-1)); 
-    }
 
     // inicializa el grid
     var grid = jQuery('#prestamo_equipo-grid').jqGrid({
@@ -172,24 +121,24 @@ $(function () {
     }, {// edit
         width: 420,
         modal: true,
-		closeAfterAdd:true,
-        beforeSubmit : function(postdata, formid) { 
-            if(moment(postdata.fecha_fin).isAfter(postdata.fecha_inicio)){
-                return[true,"Success"]; 
-            }else{
-                return[false,"Fecha y hora inicio debe ser menor a fecha y hora fin."];
+        closeAfterAdd: true,
+        beforeSubmit: function (postdata, formid) {
+            if (moment(postdata.fecha_fin).isAfter(postdata.fecha_inicio)) {
+                return[true, "Success"];
+            } else {
+                return[false, "Fecha y hora inicio debe ser menor a fecha y hora fin."];
             }
         },
         afterSubmit: respuestaServidor
     }, {// add
         width: 420,
         modal: true,
-		closeAfterAdd:true,
-        beforeSubmit : function(postdata, formid) { 
-            if(moment(postdata.fecha_fin).isAfter(postdata.fecha_inicio)){
-                return[true,"Success"]; 
-            }else{
-                return[false,"Fecha y hora inicio debe ser menor a fecha y hora fin."];
+        closeAfterAdd: true,
+        beforeSubmit: function (postdata, formid) {
+            if (moment(postdata.fecha_fin).isAfter(postdata.fecha_inicio)) {
+                return[true, "Success"];
+            } else {
+                return[false, "Fecha y hora inicio debe ser menor a fecha y hora fin."];
             }
         },
         afterSubmit: respuestaServidor
@@ -217,7 +166,7 @@ $(function () {
      * @param {type} columna nombre con que está etiquetada la columna
      * @returns {Array} un array indicando si la validación fue exitosa o no
      */
-    function validarOrdenProduccion(valor, columna) {
+    function validarEJEMPLO(valor, columna) {
 
         if (columna == 'id_externo') {
             if (valor === '0') {

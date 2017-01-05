@@ -1,3 +1,4 @@
 
-serviciosTecnicos/varios/includes.zip           contiene las librerías requeridas por el proyecto y otras más...
-serviciosTecnicos/varios/proyecto_usi.backup    es una base de datos posgres (custom) para demostración
+serviciosTecnicos/varios/includes.zip               contiene las librerías requeridas por el proyecto y otras más...
+serviciosTecnicos/varios/proyecto_usi.backup        es una base de datos posgres (custom) para demostración
+serviciosTecnicos/varios/vistas-y-funciones.sql     define vistas y funciones que se requieren en la base de datos

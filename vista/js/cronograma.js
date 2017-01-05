@@ -13,70 +13,70 @@ $(function () {
         altoGrid = 200;
     }
 
-    var clase = 'cronograma';  // la clase que implementa el CRUD para este grid
+    var clase = 'Cronograma';  // la clase que implementa el CRUD para este grid
     var idPager = 'cronograma-pager';  // la barra de navegación del grid ubicada en la parte inferior
 
     // las columnas de un grid se definen como un array de objetos con múltiples atributos
     var columnas = [
         {'label': 'Inicio periodo', name: 'inicio_periodo', index: 'inicio_periodo', width: 110, sortable: true, editable: true, align: "center",
-            editrules: {required: true, dateTime: true, custom: true, custom_func: validarOrdenProduccion},
+            editrules: {required: true, dateTime: true, custom: true, custom_func: validarEntradasCronograma},
             editoptions: {
                 title: 'AAAA-MM-DD HH:ii',
                 dataInit: function (elemento) {
-                    $(elemento).datetimepicker(initDatePicker);
+                    $(elemento).datetimepicker(initDateTimePicker);
                     $(elemento).width(260);
                 }
             }
         },
         {'label': 'Fin periodo', name: 'fin_periodo', index: 'fin_periodo', width: 110, sortable: true, editable: true, align: "center",
-            editrules: {required: true, dateTime: true, custom: true, custom_func: validarOrdenProduccion},
+            editrules: {required: true, dateTime: true, custom: true, custom_func: validarEntradasCronograma},
             editoptions: {
                 title: 'AAAA-MM-DD HH:ii',
                 dataInit: function (elemento) {
-                    $(elemento).datetimepicker(initDatePicker);
+                    $(elemento).datetimepicker(initDateTimePicker);
                     $(elemento).width(260);
                 }
             }
         },
         {'label': 'Tipo de actividad', name: 'tipo', index: 'tipo', width: 100, sortable: true, editable: true, edittype: "select",
-            editrules: {custom: true, custom_func: validarOrdenProduccion},
-            editoptions: { value: tipoReserva,
-                            dataEvents: [
-                                  {  type: 'change',
-                                     fn: function(e) {
-                                        if(this.value==1){
-                                            var lista = getElementos({'clase': 'monitor', 'oper': 'getSelectMonitor', 'json': true});
-                                        }else if(this.value ==2 || this.value == 3){
-                                            var lista = getElementos({'clase': 'docente', 'oper': 'getSelectDocente', 'json': true});
-                                        }
-                                        $('#usuario').html(lista);
-                                     }
-                                  }
-                               ]
+            editrules: {custom: true, custom_func: validarEntradasCronograma},
+            editoptions: {value: tipoReserva,
+                dataEvents: [
+                    {type: 'change',
+                        fn: function (e) {
+                            if (this.value == 1) {
+                                var lista = getElementos({'clase': 'Monitor', 'oper': 'getSelect', 'json': true});
+                            } else if (this.value == 2 || this.value == 3) {
+                                var lista = getElementos({'clase': 'Docente', 'oper': 'getSelect', 'json': true});
+                            }
+                            $('#usuario').html(lista);
+                        }
+                    }
+                ]
             }
         },
         {'label': 'Descripci&oacute;n de actividad', name: 'descripcion', index: 'descripcion', width: 100, sortable: true, editable: true, edittype: "textarea",
-            editrules: {custom: true, custom_func: validarOrdenProduccion},
+            editrules: {custom: true, custom_func: validarEntradasCronograma},
             editoptions: {
                 dataInit: asignarAncho
             }
         },
         {'label': 'Usuario', name: 'usuario', index: 'usuario', width: 100, sortable: true, editable: true, edittype: "select",
-            editrules: {custom: true, custom_func: validarOrdenProduccion},
+            editrules: {custom: true, custom_func: validarEntradasCronograma},
             editoptions: {
-                dataUrl: 'controlador/fachada.php?clase=usuario&oper=getSelectUsuario',
+                dataUrl: 'controlador/fachada.php?clase=Usuario&oper=getSelect',
                 dataInit: asignarAncho
             }
         },
         {'label': 'Sala', name: 'sala', index: 'sala', width: 100, sortable: true, editable: true, edittype: "select",
-            editrules: {custom: true, custom_func: validarOrdenProduccion},
+            editrules: {custom: true, custom_func: validarEntradasCronograma},
             editoptions: {
-                dataUrl: 'controlador/fachada.php?clase=sala&oper=getSelectSala',
+                dataUrl: 'controlador/fachada.php?clase=Sala&oper=getSelect',
                 dataInit: asignarAncho
             }
         },
         {'label': 'Dia', name: 'dia', index: 'dia', width: 100, sortable: true, editable: true, edittype: "select",
-            editrules: {custom: true, custom_func: validarOrdenProduccion},
+            editrules: {custom: true, custom_func: validarEntradasCronograma},
             editoptions: {value: diasSemana
             }
         },
@@ -137,28 +137,28 @@ $(function () {
     }, {// add
         width: 420,
         modal: true,
-        closeAfterAdd:true,
-        beforeSubmit : function(postdata, formid) { 
-            if(moment(postdata.fin_periodo).isAfter(postdata.inicio_periodo)){
-                return[true,"Success"]; 
-            }else{
-                return[false,"Fecha inicio debe ser menor a fecha fin."];
+        closeAfterAdd: true,
+        beforeSubmit: function (postdata, formid) {
+            if (moment(postdata.fin_periodo).isAfter(postdata.inicio_periodo)) {
+                return[true, "Success"];
+            } else {
+                return[false, "Fecha inicio debe ser menor a fecha fin."];
             }
         },
-        afterSubmit: function(respuestaServidor){
-            if(respuestaServidor.responseText){
-                $( function() {
+        afterSubmit: function (respuestaServidor) {
+            if (respuestaServidor.responseText) {
+                $(function () {
                     jQuery("#dialog-message").text(respuestaServidor.responseText);
-                    $( "#dialog-message" ).dialog({
+                    $("#dialog-message").dialog({
                         minWidth: 350,
                         modal: true,
                         buttons: {
-                            Ok: function() {
-                                $( this ).dialog( "close" );
+                            Ok: function () {
+                                $(this).dialog("close");
                             }
                         }
                     });
-                } );
+                });
             }
         }
     }, {// del
@@ -185,7 +185,7 @@ $(function () {
      * @param {type} columna nombre con que está etiquetada la columna
      * @returns {Array} un array indicando si la validación fue exitosa o no
      */
-    function validarOrdenProduccion(valor, columna) {
+    function validarEntradasCronograma(valor, columna) {
 
         if (columna == 'Usuario') {
             if (valor === '0') {
@@ -210,11 +210,12 @@ $(function () {
 
         return [true, ""];
     }
-    $( "#programacion" ).click(function() {
-        $( function() {
+
+    $("#programacion").click(function () {
+        $(function () {
             jQuery("#default").text("¡UPS! Esta función no está implementada");
-            $( "#default" ).dialog();
-        } );
+            $("#default").dialog();
+        });
     });
 
 });

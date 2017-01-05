@@ -11,97 +11,87 @@
 
         <link rel="stylesheet" media="screen" href="vista/css/estilos.css">
 
-        <link rel="stylesheet" media="screen" href="vista/css/login.css">
+        <!-- SmartMenus core CSS (required) -->
+        <link href="../includes/smartmenus/css/sm-core-css.css" rel="stylesheet" type="text/css" />
+        <!-- "sm-blue" menu theme (optional, you can use your own CSS, too) -->
+        <link href="../includes/smartmenus/css/sm-blue/sm-blue.css" rel="stylesheet" type="text/css" />
 
-        <!-- No apto para usar con Internet Explores 9 o inferiores -->
+        <style type="text/css">
+            @media (min-width: 768px) {
+                #menu-principal {
+                    float: left;
+                    width: 13em;
+                }
+            }
+        </style>
 
     </head>
 
     <body>
 
         <header>
-            <!-- diseñe la cabecera con un estilo sobrio y usable -->
-            <img src="vista/imagenes/logoazul.png" alt="Universidad De Caldas">            
+            <img src="vista/imagenes/banner-usi.jpg" alt="Universidad de Caldas">            
         </header>
 
         <div class="columns-container">
             <!-- diseñe el menú de la columna izquierda con un estilo sobrio y usable -->
             <div id ="index-menu" class="left-column">
-                <button id="index-administrativo">Administrativo</button>     
-                <p>
-                    <button id="index-asignatura">Asignaturas</button>
-                <p>
-                    <button id="index-bloque">Bloque</button>
-                <p>
-                    <button id="index-cronograma">Cronograma</button>
-                <p>                 
-                    <button id="index-docente">Docente</button> 
-                <p> 
-                    <button id="index-equipos_para_prestamos">Equipos para Préstamo</button> 
-                <p>
-                    <button id="index-equipos_sala">Equipos Sala</button>
-                <p>
-                    <button id="index-externo">Externo</button>
-                <p>
-                    <button id="index-grupo">Grupo</button>
-                <p>
-                    <button id="index-horas_disponibles_monitor">Disponibilidad monitores</button>
-                <p>
-                    <button id="index-monitor">Monitor</button>
-                <p>
-                    <button id="index-prestamo_equipo">Prestamo de equipo</button>  
-                <p> 
-                    <button id="index-reporte_danos">Reporte de daños</button> 
-                <p>
-                    <button id="index-sala">Salas</button>   
-                <p> 
-                    <button id="index-sede">Sede</button>
-                <p>	
-                    <button id="index-calendario">Calendario</button>
-                <p>
-                    <button id="cerrar-sesion">Cerrar sesión</button>
-                <p>
+                <!-- aquí se carga el menú -->
             </div>
 
             <div id="index-contenido" class="right-column">
                 <!-- sobre este div se cargarán todas las páginas que proporcionen funcionalidad a la aplicación -->
             </div>
         </div>
-        <div id="login-box" class="login-popup">
-            <form method="post" class="signin" action="#">
-                <fieldset class="textbox">
-                    <label class="username">
-                        <span>Ingrese su id</span>
-                        <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="ID: 1234">
-                    </label>
 
-                    <label class="password">
-                        <span>Contraseña</span>
-                        <input id="password" name="password" value="" type="password" placeholder="Contraseña">
-                    </label>
-
-                    <button id="entrar" name="entrar" class="submit button" type="button">Entrar</button>
-
-                </fieldset>
-            </form>
+        <div id="index-frmautentica" title="Autenticación" style="display:none;">
+            <div style="text-align: center;">
+                <b>Acceso para funcionarios y monitores<br></b>
+            </div>
+            <ol>
+                <li>
+                    <label for="index-nombre-usuario">Identificación:</label>
+                    <input type="text" id="index-nombre-usuario"/>
+                </li>
+                <li>
+                    <label for="index-contrasena">Contraseña:</label>
+                    <input type="password" id="index-contrasena" value="123"/>
+                </li>
+                <li>
+                    <button id="index-iniciar-sesion"><b>Iniciar sesión</b></button>
+                </li>
+                <li style="text-align: center">
+                    <span id="index-mensajes">
+                        <span id="index-mensaje-generarClave" class="referencia"><b>Olvidé mi contraseña</b></span>
+                        &nbsp;&nbsp;&mdash;&nbsp;&nbsp;
+                        <span id="index-mensaje-cambiarClave" class="referencia"><b>Cambiar contraseña</b></span>
+                    </span>
+                    <div id="index-mensaje-inicio" style="display:none; color:#0431B4; line-height: 2.1em;"></div>
+                </li>
+                <li>
+                    <button id="index-activar-cuenta">Activar mi cuenta</button>
+                </li>
+            </ol>
         </div>
-        
+
         <footer id="index-pie_pagina">
+            <img src="vista/imagenes/linea-usi.jpg" alt="">            
             <p><a href="">Contáctenos</a> | <a href="">Mapa del sitio</a> | <a href="">Políticas de privacidad</a></p>
             <p>&copy;2016 Todos los derechos de autor reservados...</p>
         </footer>
 
         <!------------------------------------------------------------------------------>
         <script type="text/javascript" src="../includes/jquery-3.1.1.min.js"></script>
-        <!--------  el uso de jquery-migrate-3.0.0.js es temporal, mientras se revisa compatibilidad  ----------->
+        <!--------  el uso de jquery-migrate es temporal, mientras se revisa compatibilidad  ----------->
         <script type="text/javascript" src="../includes/jquery-migrate-3.0.0.min.js"></script>
 
         <link type="text/css" href="../includes/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" >
         <script type="text/javascript" src="../includes/jquery-ui-1.12.1/jquery-ui.min.js"></script>
         <script type="text/javascript" src="../includes/jquery-ui-1.12.1/jquery.ui.datepicker-es.js"></script>
 
+        <script type="text/javascript" src="../includes/smartmenus/jquery.smartmenus.js"></script>
+
         <script type="text/javascript" src="vista/js/index.js"></script>
-        <script type="text/javascript" src="vista/js/login.js"></script>
 
         <link rel="stylesheet" type="text/css" media="screen" href="../includes/jqGridFree/css/ui.jqgrid.css" >
         <link rel="stylesheet" type="text/css" media="screen" href="../includes/jqGridFree/plugins/ui.multiselect.css" >
@@ -115,24 +105,20 @@
         <script src='../includes/fullcalendar/fullcalendar.min.js'></script>
         <script src='../includes/fullcalendar/locale/es.js'></script>
 
-        <link rel="stylesheet" type="text/css" href="../includes/datetimepicker/jquery.datetimepicker.css">
-        <script type="text/javascript" src="../includes/datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
-
+        <link rel="stylesheet" type="text/css" href="../includes/datetimepicker/jquery.datetimepicker.min.css">
+        <script type="text/javascript" src="../includes/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+<!---- OJO esta librería no se requiere
         <link rel="stylesheet" type="text/css" href="../includes/jquery-timepicker/jquery.timepicker.css">
         <script type="text/javascript" src="../includes/jquery-timepicker/jquery.timepicker.js"></script>
-
+--->
         <link type="text/css" rel="stylesheet" href="../includes/qTip2/jquery.qtip.css" />
         <script type="text/javascript" src="../includes/qTip2/jquery.qtip.js"></script>
-
-        <link rel="stylesheet" type="text/css" href="../includes/datetimepicker/jquery.datetimepicker.css"/>
-        <script src="../includes/datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
 
         <script type="text/javascript" src="../includes/jquery.blockUI.min.js"></script>
 
         <script src="../includes/jquery.fileDownload.js" type="text/javascript"></script>
 
         <script type="text/javascript" src="../includes/jquery.md5.js"></script>
-        <script type="text/javascript" src="vista/js/CRUDS.js"></script>
 
     </body>
 </html>

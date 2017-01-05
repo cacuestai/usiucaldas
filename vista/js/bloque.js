@@ -7,76 +7,39 @@ $(function () {
     if (altoGrid < 200) {
         altoGrid = 200;
     }
-    
-    var clase = 'bloque';  // la clase que implementa el CRUD para este grid
+
+    var clase = 'Bloque';  // la clase que implementa el CRUD para este grid
     var idPager = 'bloque-pager';  // la barra de navegación del grid ubicada en la parte inferior
 
-    var field1,check_function1 = function(value,colname) 
-    {
-
+    var field1, check_function1 = function (value, colname) {
         if (colname === "nombre_bloque") {
             field1 = value;
-        } 
+        }
+        if (value.length < 1) {
 
-        if(value.length<1){
-            
             return [false, "El codigo del bloque debe tener una longitud mayor o igual a 1  "];
         }
         else
         {
             return [true];
         }
-        
+
         return [true];
     };
+
     // las columnas de un grid se definen como un array de objetos con múltiples atributos
     var columnas = [
-        {'label': 'Nombre Bloque', name: 'nombre_bloque', index: 'nombre_bloque', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function1},
+        {'label': 'Bloque/Edificio', name: 'nombre_bloque', index: 'nombre_bloque', width: 200, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1, custom: true, custom_func: check_function1},
             editoptions: {dataInit: asignarAncho}
         },
-        {'label': 'Nombre Sede', name: 'nombre_sede', index: 'nombre_sede', width: 100, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1},edittype:'select',
+        {'label': 'Sede', name: 'nombre_sede', index: 'nombre_sede', width: 200, sortable: true, editable: true, editrules: {required: true, number: false, minValue: 1}, edittype: 'select',
             editoptions: {
-            /*    dataUrl: 'controlador/fachada.php?clase=bloque&oper=getSelect',
+                dataUrl: 'controlador/fachada.php?clase=Sede&oper=getSelect',
                 dataInit: asignarAncho,
-                defaultValue: '0'*/
-                defaultValue: '0',
-                dataInit: asignarAncho,
-                //value:valoresSelect()
-                value:valoresSelect()
+                defaultValue: '0'
             }
         }
     ];
-
-    function valoresSelect(){
-
-        valoresNombreSede="";      
-        $.ajax({
-            type: 'POST',
-            url: "controlador/fachada.php?clase=sede&oper=selectNombreSedes",
-            data: {},
-            success: function(data)
-            {
-                
-                var datos=jQuery.parseJSON(data);
-                //console.log("data: "+datos);
-                var rows = datos['rows'];                
-                for(i in rows)
-                {
-                    var id=rows[i]['id'];
-                    var s=id+":"+id+";";
-                    valoresNombreSede+=s;
-                  //  console.log("datos: "+rows[i]['id']);
-                }            
-                    
-            },
-              
-            async:false
-        });
-        
-
-        return valoresNombreSede.substr(0,(valoresNombreSede.length-1));  
-        
-    }
 
     // inicializa el grid
     var grid = jQuery('#bloque-grid').jqGrid({
@@ -157,8 +120,7 @@ $(function () {
      * @param {type} columna nombre con que está etiquetada la columna
      * @returns {Array} un array indicando si la validación fue exitosa o no
      */
-    function validarOrdenProduccion(valor, columna) {
-
+    function validarEjemplo(valor, columna) {
         if (columna == 'nombre_bloque') {
             if (valor === '0') {
                 return [false, "Falta seleccionar el nombre del bloque"];
